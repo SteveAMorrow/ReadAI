@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6696060A-FD4D-4426-94E4-BB94E6574E01}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bentley.Plant.App.Pid.AIImport</RootNamespace>
+    <TargetFrameworkVersion>$(TargetFrameworkVersion)</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <SignAssembly>false</SignAssembly>
+    <ApplyStrongNameSignaturePostLink>false</ApplyStrongNameSignaturePostLink>
+    <AlwaysCompileMarkupFilesInSeparateDomain>true</AlwaysCompileMarkupFilesInSeparateDomain>
+    <NoWarn>1607</NoWarn>
+    <OutputPath>$(OppidBuildDir)</OutputPath>
+    <IntermediateOutputPath>$(OppidBuildDir)</IntermediateOutputPath>
+    <AssemblyDescriptionAttribute>OpenPlant PID PID_AIImport</AssemblyDescriptionAttribute>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>$(OppidBuildDir)</OutputPath>
+    <DefineConstants>DEBUG;TRACE;CSC_VERSION_4000</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1607</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>$(SrcRoot)openplant/opcommontools/privmki/BentleySecurityTeam.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>$(PerformCodeAnalysis)</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>$(OppidBuildDir)</OutputPath>
+    <DefineConstants>TRACE;CSC_VERSION_4000</DefineConstants>
+    <Optimize>true</Optimize>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1607</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>$(OppidBuildDir)</OutputPath>
+    <DefineConstants>DEBUG;TRACE;CSC_VERSION_4000</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1607</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>$(OppidBuildDir)</OutputPath>
+    <DefineConstants>TRACE;CSC_VERSION_4000</DefineConstants>
+    <Optimize>true</Optimize>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1607</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>$(ContextSubPartsAssembliesDir)</ReferencePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb" />
+    <Reference Include="Bentley.ECObjects">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.PLATFORM">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Interop.MicroStationDGN">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.MicroStation">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.PlantBIMECPlugin">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.Pid">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.PidCatalog">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.ECObjects.MixedMode3">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.PidInterfaces">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFAppInterface">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.Schematics">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.SchematicsCatalog">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.SchematicsInterfaces">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.CadSysInterfaces">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFGraphicsSystem">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.CommonTools">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.ConfigVariable">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Bentley.logging-2.0">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.CommonToolsLogging">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.CadSys">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFGeometry">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFPrimitives">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFCatalog">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFUtilities">
+    </Reference>
+    <Reference Include="Bentley.Plant.MFObjectModel">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.CadSysInterfaces">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.CadSysMSCadElement">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.CadSysMSPrimitives">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFConversion">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFComponentManager">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFPersistenceManager" />
+    <Reference Include="Bentley.Plant.MFOMInterfaces">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFPrimitives">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Bentley.Plant.MFUtilities">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Name>Newtonsoft.Json</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AIPartClasses.cs" />
+    <Compile Include="Display.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Display.Designer.cs">
+      <DependentUpon>Display.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Import.cs" />
+    <Compile Include="PIDDrawingUtilities.cs" />
+    <Compile Include="ReadAI.cs" />
+    <Compile Include="Resources\Bentley.Plant.PID_AIImport.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Display.resx">
+      <DependentUpon>Display.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Bentley.Plant.PID_AIImport.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

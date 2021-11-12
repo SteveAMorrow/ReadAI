@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Transkit>
+    <SatelliteAssembly DllName="Bentley.Plant.PID_AIImport" DeliverEnglish="False" RightsCompliant="False">
+        <ResxFile ResourceName="Bentley.Plant.App.Pid.PID_AIImport.Resources.Bentley.Plant.App.Pid.PID_AIImport" FileName="Resources\Bentley.Plant.PID_AIImport.resx" />
+    </SatelliteAssembly>	
+</Transkit>
