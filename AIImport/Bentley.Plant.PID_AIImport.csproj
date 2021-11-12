@@ -166,6 +166,9 @@
     <Reference Include="Bentley.Plant.CadSysInterfaces">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Bentley.General.1.0">
+      <Private>false</Private>
+    </Reference>    
     <Reference Include="Bentley.Plant.CadSysMSCadElement">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -215,6 +218,7 @@
       <DependentUpon>Display.cs</DependentUpon>
     </Compile>
     <Compile Include="Import.cs" />
+    <Compile Include="Mapping.cs" />
     <Compile Include="PIDDrawingUtilities.cs" />
     <Compile Include="ReadAI.cs" />
     <Compile Include="Resources\Bentley.Plant.PID_AIImport.Designer.cs" />

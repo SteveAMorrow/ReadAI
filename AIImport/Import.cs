@@ -22,7 +22,7 @@ namespace Bentley.Plant.App.Pid.AIImport
             if (!ai.Valid) return false;
             
             Display dd = new Display(ai);
-            dd.ShowDialog();
+            dd.Show();
             return ai.Valid;
             }
 
