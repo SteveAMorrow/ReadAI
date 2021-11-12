@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KeyinTree xmlns="http://www.bentley.com/schemas/1.0/MicroStation/AddIn/KeyinTree.xsd">
+    <RootKeyinTable ID="root">
+        <Keyword SubtableRef="pidSub" CommandClass="MacroCommand" CommandWord="pid">
+            <Options Required="true" />
+        </Keyword>
+    </RootKeyinTable>
+    <SubKeyinTables>
+        <KeyinTable ID="conformSub">
+            <Keyword CommandWord="component"/>
+            <Keyword CommandWord="piperun"/>
+            <Keyword CommandWord="instrumentline"/>
+            <Keyword SubtableRef="cellsAutomaticallySub" CommandWord="cellsAutomatically"><Options TryParse="true"/></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="cellsAutomaticallySub">
+            <Keyword CommandWord="showEditor"/>
+        </KeyinTable>
+        <KeyinTable ID="assemblySub">
+            <Keyword CommandWord="create"/>
+            <Keyword CommandWord="manage"/>
+            <Keyword SubtableRef="assemblyInsertSub" CommandWord="insert"> <Options Required="true"/> </Keyword>
+        </KeyinTable>
+        <KeyinTable ID="assemblyInsertSub">
+            <Keyword CommandWord="asassembly"/>
+            <Keyword CommandWord="asindividual"/>
+        </KeyinTable>
+        <KeyinTable ID="modelSub">
+            <Keyword SubtableRef="exportSub" CommandWord="export"><Options Required="true"/></Keyword>
+            <Keyword SubtableRef="importSub" CommandWord="import"><Options Required="true"/></Keyword>
+            <Keyword SubtableRef="deleteSub" CommandWord="delete"><Options Required="true"/></Keyword>
+            <Keyword SubtableRef="validateSub" CommandWord="validate"> <Options TryParse="true"/> </Keyword>
+            <Keyword CommandWord="settings"/>
+            <Keyword CommandWord="standardPreferences"/>
+            <Keyword CommandWord="refreshstandardPreferences"/>
+            <Keyword CommandWord="ResetStandardPreferencesDialog"/>
+            <Keyword CommandWord="regenguid">. <Options Hidden="true"/> </Keyword>
+            <Keyword CommandWord="releaseTags"/>
+            <Keyword CommandWord="resetReservedFlag"/>
+            <Keyword CommandWord="regenerateGUID"/>
+            <Keyword CommandWord="validateAlternateRepository"/>
+            <Keyword CommandWord="refreshProperties"/>
+            <Keyword CommandWord="fixDocumentRelationships"/>
+        </KeyinTable>
+        <KeyinTable ID="validateSub">
+            <Keyword CommandWord="showResults"/>
+        </KeyinTable>
+        <KeyinTable ID="cloudSub">
+            <Keyword CommandWord="add"/>
+            <Keyword CommandWord="remove"/>
+        </KeyinTable>
+        <KeyinTable ID="buildSub">
+            <Keyword CommandWord="manage"/>
+            <Keyword CommandWord="wizard"/>
+        </KeyinTable>
+        <KeyinTable ID="scaleSub">
+            <Keyword CommandWord="set"/>
+            <Keyword CommandWord="reset"/>
+        </KeyinTable>
+        <KeyinTable ID="resetCellScaleSub">
+            <Keyword CommandWord="all">
+                . <Options Hidden="true"/>
+            </Keyword>
+            <Keyword CommandWord="selected">
+                . <Options Hidden="true"/>
+            </Keyword>
+        </KeyinTable>
+        <KeyinTable ID="redrawSub">
+            <Keyword CommandWord="all"/>
+            <Keyword CommandWord="selected"/>
+            <Keyword CommandWord="cells"/>
+        </KeyinTable>
+        <KeyinTable ID="componentSub">
+            <Keyword CommandWord="replace"/>
+            <Keyword SubtableRef="changeLineTypeSub" CommandWord="ChangeLineType"> <Options TryParse="true"/> </Keyword>
+            <Keyword SubtableRef="redrawSub" CommandWord="redraw"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="resetCellScaleSub" CommandWord="resetCellScale">. <Options Hidden="true"/> <Options Required="true"/> </Keyword>
+            <Keyword CommandWord="dump"/>
+            <Keyword CommandWord="releaseTags"/>
+            <Keyword CommandWord="Import"/>
+            <Keyword SubtableRef="cloudSub" CommandWord="cloud"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="buildSub" CommandWord="build"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="connectPointsSub" CommandWord="connectpoints"> <Options TryParse="true"/> </Keyword>
+            <Keyword CommandWord="ClearECProperties"/>
+            <Keyword SubtableRef="assignTemplateSub" CommandWord="assigntemplate"> <Options TryParse="true"/> </Keyword>
+            <Keyword CommandWord="create"/>
+            <Keyword CommandWord="annotate"/>
+            <Keyword SubtableRef="scaleSub" CommandWord="scale"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="selectSub" CommandWord="Select"><Options TryParse="true"/></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="selectSub">
+            <Keyword CommandWord="ByPEP"/>
+            <Keyword CommandWord="ByInstanceId"/>
+            <Keyword CommandWord="ByGUID"/>
+            <Keyword CommandWord="ByElementId"/>
+        </KeyinTable>
+        <KeyinTable ID="changeLineTypeSub">
+            <Keyword CommandWord="pipeline"/>
+            <Keyword CommandWord="instrumentline"/>
+        </KeyinTable>
+        <KeyinTable ID="connectPointsSub">
+            <Keyword CommandWord="show"/>
+            <Keyword CommandWord="hide"/>
+        </KeyinTable>
+        <KeyinTable ID="assignTemplateSub">
+            <Keyword CommandWord="invalid"/>
+            <Keyword CommandWord="valid"/>
+            <Keyword CommandWord="notYetValidated"/>
+        </KeyinTable>
+        <KeyinTable ID="interiorVertexHandleSub">
+            <Keyword CommandWord="add"> <Options TryParse="false"/> </Keyword>
+            <Keyword CommandWord="slide"> <Options TryParse="false"/> </Keyword>
+        </KeyinTable>
+        <KeyinTable ID="pipeRunSub">
+            <Keyword CommandWord="Create"/>
+            <Keyword CommandWord="Split"/>
+            <Keyword CommandWord="Merge"/>
+            <Keyword CommandWord="ChangePipeline"/>
+            <Keyword CommandWord="JumpComponents"/>
+            <Keyword CommandWord="ValidateBreaks"/>
+            <Keyword SubtableRef="interiorVertexHandleSub" CommandWord="InteriorVertexHandle"> <Options Required="true"/> </Keyword>
+            <Keyword CommandWord="UpdateToFrom"/>
+        </KeyinTable>
+        <KeyinTable ID="loopSub">
+            <Keyword CommandWord="AddComponent"/>
+            <Keyword CommandWord="RemoveComponent"/>
+        </KeyinTable>
+        <KeyinTable ID="relationshipSub">
+            <Keyword CommandWord="create"/>
+            <Keyword CommandWord="remove"/>
+        </KeyinTable>
+        <KeyinTable ID="joinSub">
+            <Keyword CommandWord="remove"/>
+        </KeyinTable>
+        <KeyinTable ID="pidSub">
+            <Keyword CommandWord="insert"/>
+            <Keyword SubtableRef="assemblySub" CommandWord="assembly"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="modelSub" CommandWord="model"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="componentSub" CommandWord="component"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="pipeRunSub" CommandWord="piperun"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="loopSub" CommandWord="loop"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="plantProjectSub" CommandWord="PlantProject"> <Options Required="true"/> </Keyword>
+            <Keyword CommandWord="BatchConvert"/>
+            <Keyword SubtableRef="relationshipSub" CommandWord="relationship"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="joinSub" CommandWord="Join"> <Options TryParse="true"/> </Keyword>
+            <Keyword SubtableRef="openPlantSpecsSub" CommandWord="OpenPlantSpecs"> <Options Required="true"/> </Keyword>
+            <Keyword SubtableRef="conformSub" CommandWord="conform"><Options Required="true"/></Keyword>
+            <Keyword SubtableRef="diagnosticSub" CommandWord="diagnostic"><Options Required="true"/></Keyword>
+            <Keyword CommandWord="ShowRSSFeed"/>
+            <Keyword SubtableRef="annotationSub" CommandWord="annotation"><Options Required="true"/></Keyword>
+            <Keyword SubtableRef="logModeSub" CommandWord="logMode"><Options Required="true"/></Keyword>
+            <Keyword CommandWord="xmlReporttoDgnLib"><Options Hidden ="true" /></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="annotationSub">
+            <Keyword SubtableRef="redrawAnnotationsSub" CommandWord="redraw"><Options Required="true"/></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="redrawAnnotationsSub">
+            <Keyword CommandWord="all"/>
+            <Keyword CommandWord="selected"/>
+        </KeyinTable>
+        <KeyinTable ID="diagnosticSub"> <!--should these be Hidden Should only Project Admin know about them-->
+            <Keyword CommandWord="CheckForDuplicateGUIDs"/>
+            <Keyword CommandWord="CheckSsSixPageConnectors"/>
+            <Keyword CommandWord="ValidateRelationships"/>
+            <Keyword CommandWord="UpdateComponentGUID"/>
+            <Keyword SubtableRef="diagnosticDeleteSub" CommandWord="delete"><Options Required="true"/></Keyword>
+            <Keyword SubtableRef="diagnosticFixSub" CommandWord="fix"><Options Required="true"/></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="diagnosticDeleteSub">
+            <Keyword CommandWord="OrphanedLogicalGroups"></Keyword>
+            <Keyword CommandWord="CorruptComponents"></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="diagnosticFixSub">
+            <Keyword CommandWord="componentPoints"/>
+            <Keyword CommandWord="corruptRelationships"/>
+            <Keyword CommandWord="documentRelationships"/>
+            <Keyword CommandWord="runConnectPoints"/>
+        </KeyinTable>
+        <KeyinTable ID="plantProjectSub">
+            <Keyword CommandWord="assignUniqueKeys"/>
+            <Keyword CommandWord="sync"/>
+            <Keyword CommandWord="workoffline"/>
+            <Keyword CommandWord="synconstartup"/>
+            <Keyword SubtableRef="syncDirectionSub" CommandWord="syncdirection"> <Options TryParse="true"/> </Keyword>
+            <Keyword CommandWord="settings"/>
+            <Keyword CommandWord="disassociate"/>
+            <Keyword CommandWord="refreshlocaliModelcopy"/>
+            <Keyword CommandWord="ReIssueiTwinBriefcase"/>
+            <Keyword CommandWord="reuse"/>
+            <Keyword CommandWord="OpenPlantSight" />
+            <Keyword CommandWord="OpenProjectPortal" />
+        </KeyinTable>
+        <KeyinTable ID="syncDirectionSub">
+            <Keyword CommandWord="AlwaysAsk"/>
+            <Keyword CommandWord="DgnToDb"/>
+            <Keyword CommandWord="DbToDgn"/>
+        </KeyinTable>
+        <KeyinTable ID="openPlantSpecsSub">
+            <Keyword CommandWord="selectProvider"/> <!--should this be Hidden  It changes spec provider-->
+        </KeyinTable>
+        <KeyinTable ID="importSub">
+          <Keyword CommandWord="drawing"/>
+          <Keyword CommandWord="idgnlist"/>
+          <Keyword CommandWord="owllist"/>
+          <Keyword CommandWord="ai"/>
+        </KeyinTable>
+        <KeyinTable ID="exportSub">
+          <Keyword CommandWord="drawing"/>
+          <Keyword CommandWord="ECXML"/>
+          <Keyword CommandWord="publishOpenPlantIDgnToOwl"/>
+        </KeyinTable>
+        <KeyinTable ID="deleteSub">
+            <Keyword CommandWord="OrphanedLogicalGroups"/>
+            <Keyword CommandWord="CorruptComponents"/>
+            <Keyword CommandWord="ClearOrphanedPBSItems"></Keyword>
+        </KeyinTable>
+        <KeyinTable ID="logModeSub">
+            <Keyword CommandWord="batch"/>
+            <Keyword CommandWord="interactive"/>
+        </KeyinTable>
+    </SubKeyinTables>
+    <KeyinHandlers>
+        <!--Please keep these in alphabetical order, to aid both Feature Tracking and documentation-->
+        <KeyinHandler Keyin="pid annotation redraw all" Function="Bentley.Plant.App.Pid.PidApplication.RedrawAllAnnotationComponents"/>
+        <KeyinHandler Keyin="pid annotation redraw selected" Function="Bentley.Plant.App.Pid.PidApplication.RedrawSelectedAnnotationComponents"/>
+        <KeyinHandler Keyin="pid assembly create" Function="Bentley.Plant.App.Pid.PidApplication.CreateAssembly"/>
+        <KeyinHandler Keyin="pid assembly insert asassembly" Function="Bentley.Plant.App.Pid.PidApplication.InsertAssemblyAsAssembly"/>
+        <KeyinHandler Keyin="pid assembly insert asindividual" Function="Bentley.Plant.App.Pid.PidApplication.InsertAssemblyAsIndividualComponents"/>
+        <KeyinHandler Keyin="pid assembly manage" Function="Bentley.Plant.App.Pid.PidApplication.RunAssemblyManager"/>
+        <KeyinHandler Keyin="pid BatchConvert" Function="Bentley.Plant.App.Pid.PidApplication.BatchConvert"/>
+        <KeyinHandler Keyin="pid component annotate" Function="Bentley.Plant.App.Pid.PidApplication.AnnotateComponent"/>
+        <KeyinHandler Keyin="pid component assigntemplate" Function="Bentley.Plant.App.Pid.PidApplication.AssignTemplateToComponent"/>
+        <KeyinHandler Keyin="pid component assigntemplate invalid" Function="Bentley.Plant.App.Pid.PidApplication.AssignTemplateToInvalidComponent"/>
+        <KeyinHandler Keyin="pid component assigntemplate notYetValidated" Function="Bentley.Plant.App.Pid.PidApplication.AssignTemplateToNotYetValidatedComponent"/>
+        <KeyinHandler Keyin="pid component assigntemplate valid" Function="Bentley.Plant.App.Pid.PidApplication.AssignTemplateToValidComponent"/>
+        <KeyinHandler Keyin="pid component build manage" Function="Bentley.Plant.App.Pid.PidApplication.RunComponentBuilderConsole"/>
+        <KeyinHandler Keyin="pid component build wizard" Function="Bentley.Plant.App.Pid.PidApplication.RunComponentBuilderWizard"/>
+        <KeyinHandler Keyin="pid component ChangeLineType" Function="Bentley.Plant.App.Pid.PidApplication.ChangeLineType"/>
+        <KeyinHandler Keyin="pid component ChangeLineType instrumentLine" Function="Bentley.Plant.App.Pid.PidApplication.ChangeInstrumentLineType"/>
+        <KeyinHandler Keyin="pid component ChangeLineType pipeline" Function="Bentley.Plant.App.Pid.PidApplication.ChangePipelineType"/>
+        <KeyinHandler Keyin="pid component ClearECProperties" Function="Bentley.Plant.App.Pid.PidApplication.ClearECProperties"/>
+        <KeyinHandler Keyin="pid component cloud add" Function="Bentley.Plant.App.Pid.PidApplication.AddCloudToComponent"/>
+        <KeyinHandler Keyin="pid component cloud remove" Function="Bentley.Plant.App.Pid.PidApplication.RemoveCloudFromComponent"/>
+        <KeyinHandler Keyin="pid component connectpoints" Function="Bentley.Plant.App.Pid.PidApplication.DisplaySelectedComponentsConnectPoints"/>
+        <KeyinHandler Keyin="pid component connectpoints hide" Function="Bentley.Plant.App.Pid.PidApplication.HideSelectedComponentsConnectPoints"/>
+        <KeyinHandler Keyin="pid component connectpoints show" Function="Bentley.Plant.App.Pid.PidApplication.ShowSelectedComponentsConnectPoints"/>
+        <KeyinHandler Keyin="pid component create" Function="Bentley.Plant.App.Pid.PidApplication.CreateUserComponent"/>
+        <KeyinHandler Keyin="pid component dump" Function="Bentley.Plant.App.Pid.PidApplication.DumpSelectedComponent"/>
+        <KeyinHandler Keyin="pid component releaseTags" Function="Bentley.Plant.App.Pid.PidApplication.ReleaseCodeSelectedComponent"/>
+        <KeyinHandler Keyin="pid component redraw all" Function="Bentley.Plant.App.Pid.PidApplication.RedrawAllComponents"/>
+        <KeyinHandler Keyin="pid component redraw cells" Function="Bentley.Plant.App.Pid.PidApplication.RedrawCellComponents"/>
+        <KeyinHandler Keyin="pid component redraw selected" Function="Bentley.Plant.App.Pid.PidApplication.RedrawSelectedComponents"/>
+        <KeyinHandler Keyin="pid component replace" Function="Bentley.Plant.App.Pid.PidApplication.ReplaceComponent"/>
+        <KeyinHandler Keyin="pid component resetCellScale all" Function="Bentley.Plant.App.Pid.PidApplication.UpdateCellsToPlaceScaleFactorAndRedrawAll"/>
+        <KeyinHandler Keyin="pid component resetCellScale selected" Function="Bentley.Plant.App.Pid.PidApplication.UpdateCellsToPlaceScaleFactorAndRedrawSelected"/>
+        <KeyinHandler Keyin="pid component scale reset" Function="Bentley.Plant.App.Pid.PidApplication.ResetScale"/>
+        <KeyinHandler Keyin="pid component scale set" Function="Bentley.Plant.App.Pid.PidApplication.SetScale"/>
+        <KeyinHandler Keyin="pid component Select" Function="Bentley.Plant.App.Pid.PidApplication.SelectBy"/>
+        <KeyinHandler Keyin="pid component Select ByElementId" Function="Bentley.Plant.App.Pid.PidApplication.SelectByElementId"/>
+        <KeyinHandler Keyin="pid component Select ByGUID" Function="Bentley.Plant.App.Pid.PidApplication.SelectByGUID"/>
+        <KeyinHandler Keyin="pid component Select ByInstanceId" Function="Bentley.Plant.App.Pid.PidApplication.SelectByInstanceId"/>
+        <KeyinHandler Keyin="pid component Select ByPEP" Function="Bentley.Plant.App.Pid.PidApplication.SelectByPEP"/>     
+        <KeyinHandler Keyin="pid conform component" Function="Bentley.Plant.App.Pid.PidApplication.CreateUserComponent"/><!--Duplicate of pid component create which is kept for backward compatiability-->
+        <KeyinHandler Keyin="pid conform instrumentline" Function="Bentley.Plant.App.Pid.PidApplication.CreateUserInstrumentLine"/>
+        <KeyinHandler Keyin="pid conform piperun" Function="Bentley.Plant.App.Pid.PidApplication.CreateUserRun"/><!--Duplicate of pid piperun create which is kept for backward compatiability-->
+        <KeyinHandler Keyin="pid conform cellsAutomatically" Function="Bentley.Plant.App.Pid.PidApplication.ConformCellsAutomatically"/>
+        <KeyinHandler Keyin="pid conform cellsAutomatically showEditor" Function="Bentley.Plant.App.Pid.PidApplication.ShowEditorConformCellsAutomatically"/>
+        <KeyinHandler Keyin="pid diagnostic CheckForDuplicateGUIDs" Function="Bentley.Plant.App.Pid.PidApplication.CheckForDuplicateGUIDs"/>
+        <KeyinHandler Keyin="pid diagnostic CheckSsSixPageConnectors" Function="Bentley.Plant.App.Pid.PidApplication.CheckSsSixPageConnectors"/>
+        <KeyinHandler Keyin="pid diagnostic delete CorruptComponents" Function="Bentley.Plant.App.Pid.PidApplication.DeleteCorruptComponents"/>
+        <KeyinHandler Keyin="pid diagnostic delete OrphanedLogicalGroups" Function="Bentley.Plant.App.Pid.PidApplication.DeleteOrphanedLogicalGroups"/>
+        <KeyinHandler Keyin="pid diagnostic fix componentPoints" Function="Bentley.Plant.App.Pid.PidApplication.FixComponentPoints"/>
+        <KeyinHandler Keyin="pid diagnostic fix corruptRelationships" Function="Bentley.Plant.App.Pid.PidApplication.FixCorruptRelationships"/>
+        <KeyinHandler Keyin="pid diagnostic fix documentRelationships" Function="Bentley.Plant.App.Pid.PidApplication.FixDocumentRelationships"/>
+        <KeyinHandler Keyin="pid diagnostic fix runConnectPoints" Function="Bentley.Plant.App.Pid.PidApplication.FixRunConnectPoints"/>
+        <KeyinHandler Keyin="pid diagnostic UpdateComponentGUID" Function="Bentley.Plant.App.Pid.PidApplication.UpdateComponentGUID"/>
+        <KeyinHandler Keyin="pid diagnostic ValidateRelationships" Function="Bentley.Plant.App.Pid.PidApplication.ValidateRelationshipsInModel"/>
+        <KeyinHandler Keyin="pid insert" Function="Bentley.Plant.App.Pid.PidApplication.Insert"/>
+        <KeyinHandler Keyin="pid Join" Function="Bentley.Plant.App.Pid.PidApplication.Join"/>
+        <KeyinHandler Keyin="pid Join remove" Function="Bentley.Plant.App.Pid.PidApplication.RemoveJoin"/>
+        <KeyinHandler Keyin="pid logMode batch" Function="Bentley.Plant.App.Pid.PidApplication.SetLogModeBatch"/>
+        <KeyinHandler Keyin="pid logMode interactive" Function="Bentley.Plant.App.Pid.PidApplication.SetLogModeInteractive"/>
+        <KeyinHandler Keyin="pid loop AddComponent" Function="Bentley.Plant.App.Pid.PidApplication.AddComponentToLoopTool"/>
+        <KeyinHandler Keyin="pid loop RemoveComponent" Function="Bentley.Plant.App.Pid.PidApplication.RemoveComponentFromLoopTool"/>
+        <KeyinHandler Keyin="pid model delete CorruptComponents" Function="Bentley.Plant.App.Pid.PidApplication.DeleteCorruptComponents"/>
+        <KeyinHandler Keyin="pid model delete OrphanedLogicalGroups" Function="Bentley.Plant.App.Pid.PidApplication.DeleteOrphanedLogicalGroups"/>
+        <KeyinHandler Keyin="pid model delete ClearOrphanedPBSItems" Function="Bentley.Plant.App.Pid.PidApplication.ClearOrphanedPBSItems"/>
+        <KeyinHandler Keyin="pid model export drawing" Function="Bentley.Plant.App.Pid.PidApplication.ExportModelToDrawing"/>
+        <KeyinHandler Keyin="pid model export ECXML" Function="Bentley.Plant.App.Pid.PidApplication.ExportModelToECXML"/>
+        <KeyinHandler Keyin="pid model export publishOpenPlantIDgnToOwl" Function="Bentley.Plant.App.Pid.PidApplication.PublishOpenPlantIDgnToOwl" />
+        <KeyinHandler Keyin="pid model fixDocumentRelationships" Function="Bentley.Plant.App.Pid.PidApplication.FixDocumentRelationships"/>
+        <KeyinHandler Keyin="pid model import drawing" Function="Bentley.Plant.App.Pid.PidApplication.ImportModel"/>     
+        <KeyinHandler Keyin="pid model import idgnlist" Function="Bentley.Plant.App.Pid.PidApplication.ImportIDgnList" />
+        <KeyinHandler Keyin="pid model import owllist" Function="Bentley.Plant.App.Pid.PidApplication.ImportOwlList" />
+        <KeyinHandler Keyin="pid model Import ai" Function="Bentley.Plant.App.Pid.PidApplication.ImportFromAI"/>
+        <KeyinHandler Keyin="pid model refreshProperties" Function="Bentley.Plant.App.Pid.PidApplication.RefreshAndRedrawProperties"/>
+        <KeyinHandler Keyin="pid model regenguid" Function="Bentley.Plant.App.Pid.PidApplication.RegenGuid"/>
+        <KeyinHandler Keyin="pid model releaseTags" Function="Bentley.Plant.App.Pid.PidApplication.ReleaseCodeCurrentDGN"/>
+        <KeyinHandler Keyin="pid model resetReservedFlag" Function="Bentley.Plant.App.Pid.PidApplication.ReSetReservedFlag"/>
+        <KeyinHandler Keyin="pid model regenerateGUID" Function="Bentley.Plant.App.Pid.PidApplication.RegenerateGUIDandResetReserveTag"/>
+        <KeyinHandler Keyin="pid model settings" Function="Bentley.Plant.App.Pid.PidApplication.ShowStartUpSettings"/>
+        <KeyinHandler Keyin="pid model standardPreferences" Function="Bentley.Plant.App.Pid.PidApplication.ShowStandardPreferencesDialog"/>
+        <KeyinHandler Keyin="pid model refreshstandardPreferences" Function="Bentley.Plant.App.Pid.PidApplication.RefreshStandardPreferencesDlg"/>
+        <KeyinHandler Keyin="pid model ResetStandardPreferencesDialog" Function="Bentley.Plant.App.Pid.PidApplication.ResetStandardPreferencesDialog"/>
+        <KeyinHandler Keyin="pid model validate" Function="Bentley.Plant.App.Pid.PidApplication.ValidateModel"/>
+        <KeyinHandler Keyin="pid model validate showResults" Function="Bentley.Plant.App.Pid.PidApplication.ValidateModelAndShowForm"/>
+        <KeyinHandler Keyin="pid model validateAlternateRepository" Function="Bentley.Plant.App.Pid.PidApplication.ValidateModelWithAlternateRepository"/>        
+        <KeyinHandler Keyin="pid OpenPlantSpecs selectProvider" Function="Bentley.Plant.App.Pid.PidApplication.SelectOpenPlantSpecsProvider"/>
+        <KeyinHandler Keyin="pid piperun ChangePipeline" Function="Bentley.Plant.App.Pid.PidApplication.ChangeRunPipelineTool"/>
+        <KeyinHandler Keyin="pid piperun Create" Function="Bentley.Plant.App.Pid.PidApplication.CreateUserRun"/>
+        <KeyinHandler Keyin="pid piperun InteriorVertexHandle add" Function="Bentley.Plant.App.Pid.PidApplication.SetRunInteriorVertexHandleToAdd"/>
+        <KeyinHandler Keyin="pid piperun InteriorVertexHandle slide" Function="Bentley.Plant.App.Pid.PidApplication.SetRunInteriorVertexHandleToSlide"/>
+        <KeyinHandler Keyin="pid piperun JumpComponents" Function="Bentley.Plant.App.Pid.PidApplication.JumpComponentsForRun"/>
+        <KeyinHandler Keyin="pid piperun Merge" Function="Bentley.Plant.App.Pid.PidApplication.MergeRun"/>
+        <KeyinHandler Keyin="pid piperun Split" Function="Bentley.Plant.App.Pid.PidApplication.SplitRun"/>
+        <KeyinHandler Keyin="pid piperun UpdateToFrom" Function="Bentley.Plant.App.Pid.PidApplication.UpdateToFrom"/>
+        <KeyinHandler Keyin="pid piperun ValidateBreaks" Function="Bentley.Plant.App.Pid.PidApplication.ValidateBreaksForRun"/>
+        <KeyinHandler Keyin="pid PlantProject assignUniqueKeys" Function="Bentley.Plant.App.Pid.PidApplication.AssignNextAvailableBusinessKey"/>
+        <KeyinHandler Keyin="pid PlantProject disassociate" Function="Bentley.Plant.App.Pid.PidApplication.DisAssociateWithAlternateRepository"/>
+        <KeyinHandler Keyin="pid PlantProject refreshlocaliModelcopy" Function="Bentley.Plant.App.Pid.PidApplication.RefreshLocaliModelCopy"/>
+        <KeyinHandler Keyin="pid PlantProject ReIssueiTwinBriefcase" Function="Bentley.Plant.App.Pid.PidApplication.ReIssueiTwinBriefcase"/>
+        <KeyinHandler Keyin="pid PlantProject reuse" Function="Bentley.Plant.App.Pid.PidApplication.ReuseProject"/>
+        <KeyinHandler Keyin="pid PlantProject settings" Function="Bentley.Plant.App.Pid.PidApplication.SetSynchronizationSettings"/>
+        <KeyinHandler Keyin="pid PlantProject sync" Function="Bentley.Plant.App.Pid.PidApplication.SynchronizeWithAlternateRepository"/>
+        <KeyinHandler Keyin="pid PlantProject syncdirection" Function="Bentley.Plant.App.Pid.PidApplication.SetSynchronizationDirection"/>
+        <KeyinHandler Keyin="pid PlantProject syncdirection AlwaysAsk" Function="Bentley.Plant.App.Pid.PidApplication.SetSynchronizationDirectionAlwaysAsk"/>
+        <KeyinHandler Keyin="pid PlantProject syncdirection DbToDgn" Function="Bentley.Plant.App.Pid.PidApplication.SetSynchronizationDirectionDbToDgn"/>
+        <KeyinHandler Keyin="pid PlantProject syncdirection DgnToDb" Function="Bentley.Plant.App.Pid.PidApplication.SetSynchronizationDirectionDgnToDb"/>
+        <KeyinHandler Keyin="pid PlantProject synconstartup" Function="Bentley.Plant.App.Pid.PidApplication.SetSynchronizeOnStartUp"/>
+        <KeyinHandler Keyin="pid PlantProject workoffline" Function="Bentley.Plant.App.Pid.PidApplication.SetWorkOffline"/>
+        <KeyinHandler Keyin="pid PlantProject OpenPlantSight" Function="Bentley.Plant.App.Pid.PidApplication.OpenPlantSight"/>
+        <KeyinHandler Keyin="pid PlantProject OpenProjectPortal" Function="Bentley.Plant.App.Pid.PidApplication.OpenProjectPortal"/>
+        <KeyinHandler Keyin="pid relationship create" Function="Bentley.Plant.App.Pid.PidApplication.CreateRelationship"/>
+        <KeyinHandler Keyin="pid relationship remove" Function="Bentley.Plant.App.Pid.PidApplication.RemoveRelationship"/>
+        <KeyinHandler Keyin="pid ShowRSSFeed" Function="Bentley.Plant.App.Pid.PidApplication.ShowRSSFeed"/>
+        <KeyinHandler Keyin="pid xmlReporttoDgnLib" Function="Bentley.Plant.App.Pid.PidApplication.XmlReportToDgnLib"/>
+      
+        
+    </KeyinHandlers>
+</KeyinTree>
+

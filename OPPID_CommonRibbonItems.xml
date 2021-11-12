@@ -1,0 +1,1726 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- =====================================================================================
+|
+|     $Source: ribbon/Common/OPPID_CommonRibbonItems.xml $
+|
+|  $Copyright: (c) 2021 Bentley Systems, Incorporated. All rights reserved. $
+|
+======================================================================================= -->
+<RibbonItems xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="RibbonDefinitions.xsd">
+   
+   <Tabs>
+    <Tab Name="OpenPlantPID.Common.PID.Tools" Priority="0">
+      <Label>Tools</Label>
+      <TabParams>
+        <AccessText>T</AccessText>
+        <Visibility />
+      </TabParams>
+      <TabItems>
+        <!-- These Groups are displayed on the Ribbon -->
+        <GroupRef Name="BEPS.Selection.Group" Priority="-11000"> 
+            <GroupParams> 
+                <GroupLauncherAccessText>1</GroupLauncherAccessText> 
+                <AccessText>1</AccessText> 
+            </GroupParams> 
+        </GroupRef> 
+        <GroupRef Name="BEPS.CommonTools.Group" Priority="-10000"> 
+            <GroupParams> 
+                <GroupLauncherAccessText>2</GroupLauncherAccessText> 
+                <AccessText>2</AccessText> 
+            </GroupParams> 
+        </GroupRef> 
+       <GroupRef Name="PP.Group.PrimarySmall" Priority="-9500">
+          <GroupParams>
+            <GroupLauncherAccessText>1</GroupLauncherAccessText>
+            <AccessText>1</AccessText>
+          </GroupParams>
+        </GroupRef>
+        <GroupRef Name="OPPID.Common.Database.Group" Priority="100">
+          <GroupParams />
+        </GroupRef>
+        <GroupRef Name="OPPID.Common.Managers.Group" Priority="200">
+          <GroupParams />
+        </GroupRef>
+        <GroupRef Name="OPPID.Common.Gallery.Group" Priority="300">
+          <GroupParams />
+        </GroupRef>
+
+      </TabItems>
+    </Tab>
+    
+    <Tab Name="OpenPlantPID.Common.PID.Tools.Alternate" Priority="0">
+      <Label>Tools</Label>
+      <TabParams>
+        <AccessText>T</AccessText>
+        <Visibility />
+      </TabParams>
+      <TabItems>
+        <!-- These Groups are displayed on the Ribbon -->
+        <GroupRef Name="BEPS.Selection.Group" Priority="-11000"> 
+            <GroupParams> 
+                <GroupLauncherAccessText>1</GroupLauncherAccessText> 
+                <AccessText>1</AccessText> 
+            </GroupParams> 
+        </GroupRef> 
+        <GroupRef Name="BEPS.CommonTools.Group" Priority="-10000"> 
+            <GroupParams> 
+                <GroupLauncherAccessText>2</GroupLauncherAccessText> 
+                <AccessText>2</AccessText> 
+            </GroupParams> 
+        </GroupRef> 
+       <GroupRef Name="PP.Group.PrimarySmall" Priority="-9500">
+          <GroupParams>
+            <GroupLauncherAccessText>1</GroupLauncherAccessText>
+            <AccessText>1</AccessText>
+          </GroupParams>
+        </GroupRef>
+        <GroupRef Name="OPPID.Common.Database.Group" Priority="100">
+          <GroupParams />
+        </GroupRef>
+        <GroupRef Name="OPPID.Common.Managers.Group" Priority="200">
+          <GroupParams />
+        </GroupRef>
+        <GroupRef Name="OPPID.Common.Gallery.Group.Alternate" Priority="300">
+          <GroupParams />
+        </GroupRef>
+
+      </TabItems>
+    </Tab>
+   
+    <!-- Contains all of the groups that can be shown in the gallery. This tab is hidden. -->
+    <Tab Name="OpenPlantPID.Common.GalleryTools" Priority="0">
+      <Label>PID Common Gallery</Label>
+      <TabParams>
+        <AccessText>G</AccessText>
+        <!-- This expression hides the tab from being shown in the Ribbon -->
+        <Visibility>
+          <ShowExpression>[Session]0=1</ShowExpression>
+        </Visibility>
+        <!-- This parameter enables any Tab items (group references) to be displayed in a Gallery. The Group reference contains button items that will be displayed in a Gallery -->
+        <ApplicationParams>
+          <ApplicationParam>
+            <Name>UseInGallery</Name>
+            <Value>True</Value>
+          </ApplicationParam>
+        </ApplicationParams>
+      </TabParams>
+      
+      <!-- These Groups will not be shown in the Ribbon. This section determines the Gallery group order -->
+      <TabItems>
+         <GroupRef Name="OPPID.Common.Annotation.Group" Priority="11">
+              <GroupParams>
+                <GroupLauncherAccessText>1</GroupLauncherAccessText>
+                <AccessText>1</AccessText>
+              </GroupParams>
+         </GroupRef>
+         <GroupRef Name="OPPID.Common.UserCells.Group" Priority="22">
+              <GroupParams>
+                <GroupLauncherAccessText>2</GroupLauncherAccessText>
+                <AccessText>2</AccessText>
+              </GroupParams>
+         </GroupRef>
+         <GroupRef Name="OPPID.Common.PipingUtilities.Group" Priority="33">
+              <GroupParams>
+                <GroupLauncherAccessText>3</GroupLauncherAccessText>
+                <AccessText>3</AccessText>
+              </GroupParams>
+         </GroupRef>
+         <GroupRef Name="OPPID.Common.ConformanceTools.Group" Priority="44">
+              <GroupParams>
+                <GroupLauncherAccessText>4</GroupLauncherAccessText>
+                <AccessText>4</AccessText>
+              </GroupParams>
+         </GroupRef>
+
+      </TabItems>
+    </Tab>
+
+    <!-- Alternate Common tools tab with without user cell group -->
+    <Tab Name="OpenPlantPID.Common.GalleryTools.Alternate" Priority="0">
+      <Label>PID Common Gallery</Label>
+      <TabParams>
+        <AccessText>A</AccessText>
+        <!-- This expression hides the tab from being shown in the Ribbon -->
+        <Visibility>
+          <ShowExpression>[Session]0=1</ShowExpression>
+        </Visibility>
+        <!-- This parameter enables any Tab items (group references) to be displayed in a Gallery. The Group reference contains button items that will be displayed in a Gallery -->
+        <ApplicationParams>
+          <ApplicationParam>
+            <Name>UseInGallery</Name>
+            <Value>True</Value>
+          </ApplicationParam>
+        </ApplicationParams>
+      </TabParams>
+      
+      <!-- These Groups will not be shown in the Ribbon. This section determines the Gallery group order -->
+      <TabItems>
+         <GroupRef Name="OPPID.Common.Annotation.Group" Priority="11">
+              <GroupParams>
+                <GroupLauncherAccessText>1</GroupLauncherAccessText>
+                <AccessText>1</AccessText>
+              </GroupParams>
+         </GroupRef>
+         <GroupRef Name="OPPID.Common.PipingUtilities.Group" Priority="22">
+              <GroupParams>
+                <GroupLauncherAccessText>2</GroupLauncherAccessText>
+                <AccessText>2</AccessText>
+              </GroupParams>
+         </GroupRef>
+         <GroupRef Name="OPPID.Common.ConformanceTools.Group" Priority="33">
+              <GroupParams>
+                <GroupLauncherAccessText>3</GroupLauncherAccessText>
+                <AccessText>3</AccessText>
+              </GroupParams>
+         </GroupRef>
+      </TabItems>
+    </Tab>
+  </Tabs>
+
+   <Groups>
+   
+    <!-- These Groups are displayed on the Ribbon. Any Button reference will be shown in the Gallery -->
+    <Group Name="OPPID.Common.Database.Group" Priority="11" PanelType="Collapsible">
+      <Label>PlantSight</Label>
+      <GroupParams>
+        <Visibility />
+        <ApplicationParams>
+          <ApplicationParam>
+            <!--Name>IsAGalleryGroupParent</Name-->
+            <Name>IsButtons</Name>
+            <Value>False</Value>
+          </ApplicationParam>
+        </ApplicationParams>
+      </GroupParams>
+     <GroupItems>
+        <ButtonRef Name="OPPID.Common.PID.Database.Sync" Priority="1">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>SS</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Database.Settings" Priority="11">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>DS</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Database.OpenPlantSight" Priority="11">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>PS</AccessText>
+          </ButtonParams>
+        </ButtonRef>        
+      </GroupItems>
+    </Group>
+    <Group Name="OPPID.Common.Managers.Group" Priority="22" PanelType="Collapsible">
+      <Label>Managers</Label>
+      <GroupParams><Visibility /></GroupParams>
+     <GroupItems>
+        <ButtonRef Name="OPPID.Common.PID.Manager.DrawingSettings" Priority="11">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>DS</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.StandardPreferences" Priority="18">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>DS</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        
+        <ButtonRef Name="OPPID.Common.PID.Manager.Assembly.Manage" Priority="22">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>AS</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Manager.Component" Priority="55">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>MC</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Manager.ModelValidation" Priority="66">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>MV</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+      </GroupItems>
+    </Group>
+    <Group Name="OPPID.Common.Gallery.Group" Priority="33" PanelType="Collapsible">
+      <Label>Tools</Label>
+      <GroupParams>
+        <Visibility />
+        <ApplicationParams>
+          <ApplicationParam>
+            <Name>IsAGalleryGroupParent</Name>
+            <Value>True</Value>
+          </ApplicationParam>
+        </ApplicationParams>
+      </GroupParams>
+      <GroupDialogSpec>
+        <CommandData Type="UserKeyinCommand">
+        <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.Gallery.Group</Keyin>
+            <Label>Gallery</Label>
+            <Description>Show Full Common PID Gallery</Description>
+        </UserKeyinCommand>
+        </CommandData>
+     </GroupDialogSpec>
+     <GroupItems>
+        <ButtonRef Name="OPPID.Common.PID.Annotations" Priority="1">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>AA</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.UserCells" Priority="11">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>UC</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Manager.ReplaceComponent" Priority="44">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>RC</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.ConformanceTools" Priority="45">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>CT</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Reports.Buttons" Priority="55">
+          <SplitButtonParams Size="Large">
+            <AccessText>RR</AccessText>
+            <PopupAccessText>R</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Export.Buttons" Priority="66">
+          <SplitButtonParams Size="Large">
+            <AccessText>EE</AccessText>
+            <PopupAccessText>E</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Import.Buttons" Priority="77">
+          <SplitButtonParams Size="Large">
+            <AccessText>II</AccessText>
+            <PopupAccessText>I</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>
+        </GroupItems>
+    </Group>
+    
+    <Group Name="OPPID.Common.Gallery.Group.Alternate" Priority="44" PanelType="Collapsible">
+      <Label>Tools</Label>
+      <GroupParams>
+        <Visibility />
+        <ApplicationParams>
+          <ApplicationParam>
+            <Name>IsAGalleryGroupParent</Name>
+            <Value>True</Value>
+          </ApplicationParam>
+        </ApplicationParams>
+      </GroupParams>
+      <GroupDialogSpec>
+        <CommandData Type="UserKeyinCommand">
+        <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.Gallery.Group.Alternate</Keyin>
+            <Label>Gallery</Label>
+            <Description>Show Full Tools Gallery</Description>
+        </UserKeyinCommand>
+        </CommandData>
+     </GroupDialogSpec>
+     <GroupItems>
+        <ButtonRef Name="OPPID.Common.PID.Annotations" Priority="1">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>AA</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.PipingUtilities" Priority="33">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>PU</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Manager.ReplaceComponent" Priority="44">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>RC</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.ConformanceTools" Priority="45">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>CT</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Reports.Buttons" Priority="55">
+          <SplitButtonParams Size="Large">
+            <AccessText>RR</AccessText>
+            <PopupAccessText>R</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Export.Buttons" Priority="66">
+          <SplitButtonParams Size="Large">
+            <AccessText>EE</AccessText>
+            <PopupAccessText>E</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Import.Buttons" Priority="77">
+          <SplitButtonParams Size="Large">
+            <AccessText>II</AccessText>
+            <PopupAccessText>I</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>
+      </GroupItems>
+    </Group>
+    
+    <Group Name="OPPID.Common.Parts.Group" Priority="22" PanelType="Collapsible">
+     <Label>Tools</Label>
+     <GroupItems>
+        <ButtonRef Name="OPPID.Common.PID.Manager.DrawingSettings" Priority="10">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>DS</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.StandardPreferences" Priority="18">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>DS</AccessText>
+          </ButtonParams>
+        </ButtonRef>        
+        <ButtonRef Name="OPPID.Common.PID.Annotations" Priority="20">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <AccessText>AA</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <ButtonRef Name="OPPID.Common.PID.Manager.ReplaceComponent" Priority="40">
+          <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+            <Visibility />
+            <AccessText>RC</AccessText>
+          </ButtonParams>
+        </ButtonRef>
+        <SplitButtonRef Name="OPPID.Common.Reports.Buttons" Priority="50">
+          <SplitButtonParams Size="Large">
+            <AccessText>RR</AccessText>
+            <PopupAccessText>R</PopupAccessText>
+          </SplitButtonParams>
+        </SplitButtonRef>        
+      </GroupItems>
+    </Group>
+   
+    <!-- These groups contain the button references that will be shown in the Galleries. These Groups will NOT BE SHOWN in the Ribbon -->
+    <Group GroupZone="MainOPPID" Name="OPPID.Common.ConformanceTools.Group" PanelType="Collapsible" Priority="11111">
+      <Label>Conformance Tools</Label>
+      <Icon Type="NamedIcon">
+         <NamedIcon>Conformance</NamedIcon>
+      </Icon>
+      <GroupParams>
+         <AccessText>SS</AccessText>
+      </GroupParams>
+      <GroupItems>
+         <ButtonRef Name="OPPID.ConformanceTools.UserInstrument" Priority="253">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.UserEquipment" Priority="254">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.UserValve" Priority="255">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.UserComponent" Priority="256">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.Join" Priority="257">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.RemoveJoin" Priority="258">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.AddRelationship" Priority="259">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.RemoveRelationship" Priority="260">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.ConformCellsAutomatically" Priority="261">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.AutomaticCellConformanceEditor" Priority="262">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.ConformanceTools.ConvertInstrumentLine" Priority="263">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+          <ButtonRef Name="OPPID.ConformanceTools.ConvertPipeRun" Priority="264">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+      </GroupItems>
+    </Group>
+    <Group GroupZone="MainOPPID" Name="OPPID.Common.PipingUtilities.Group" PanelType="Collapsible" Priority="22222">
+      <Label>Piping Utilities</Label>
+      <Icon Type="NamedIcon">
+         <NamedIcon>RibbonGroupPrimary</NamedIcon>
+      </Icon>
+      <GroupParams>
+         <AccessText>SS</AccessText>
+      </GroupParams>
+      <GroupItems>
+         <ButtonRef Name="OPPID.PipingUtilities.SplitPipeRun" Priority="245">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.PipingUtilities.MergePipeRuns" Priority="246">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.PipingUtilities.ChangePipeRunPipeline" Priority="247">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.PipingUtilities.ChangePipelineType" Priority="249">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <!-- <ButtonRef Name="OPPID.Common.PID.PlacePipeRun" Priority="300"> -->
+              <!-- <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large"> -->
+              <!-- <Visibility /> -->
+              <!-- </ButtonParams> -->
+         <!-- </ButtonRef>          -->
+      </GroupItems>
+    </Group>
+    <Group GroupZone="MainOPPID" Name="OPPID.Common.UserCells.Group" PanelType="Collapsible" Priority="33333">
+      <Label>User Cells</Label>
+      <Icon Type="NamedIcon">
+         <NamedIcon>RibbonGroupPrimary</NamedIcon>
+      </Icon>
+      <GroupParams>
+         <AccessText>SS</AccessText>
+      </GroupParams>
+      <GroupItems>
+         <ButtonRef Name="OPPID.UserCells.EquipmentUserCell" Priority="178">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.UserCells.PumpUserCell" Priority="179">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.UserCells.ValveUserCell" Priority="180">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.UserCells.OpenValveUserCell" Priority="181">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.UserCells.ClosedValveUserCell" Priority="182">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.UserCells.InstrumentFunctionUserCell" Priority="183">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+      </GroupItems>
+    </Group>
+    <Group GroupZone="MainOPPID" Name="OPPID.Common.Annotation.Group" PanelType="Collapsible" Priority="44444">
+      <Label>Annotation</Label>
+      <Icon Type="NamedIcon">
+         <NamedIcon>Annotation_Generic</NamedIcon>
+      </Icon>
+      <GroupParams>
+         <AccessText>SS</AccessText>
+      </GroupParams>
+      <GroupItems>
+         <ButtonRef Name="OPPID.CustomAnnotations.GenericAnnotations" Priority="74">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.CustomAnnotations.EquipmentAnnotations" Priority="75">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.CustomAnnotations.PipelineAnnotations" Priority="76">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>  
+         <ButtonRef Name="OPPID.Annotation.NoteReference" Priority="165">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.Annotation.CloudbyPoints" Priority="175">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+         <ButtonRef Name="OPPID.Annotation.CloudonElement" Priority="176">
+              <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+              <Visibility />
+              </ButtonParams>
+         </ButtonRef>
+       
+      </GroupItems>
+    </Group>
+    <Group Name="PP.Group.Primary" PanelType="Collapsible" Priority="200" GroupZone="Primary">
+        <Label>Primary</Label>
+        <Icon Type="NamedIcon">
+            <NamedIcon>RibbonGroupPrimary</NamedIcon>
+        </Icon>
+        <GroupParams>
+            <AccessText>PP</AccessText>
+        </GroupParams>
+        <GroupItems>
+            <ButtonRef Name="Mstn.ProjectNavigation.Explorer" Priority="10000">
+                <ButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+                    <AccessText>RE</AccessText>
+                    <PopupAccessText>E</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <SplitButtonRef Name="Mstn.Primary.References" Priority="20000">
+                <SplitButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+                    <AccessText>RR</AccessText>
+                    <PopupAccessText>R</PopupAccessText>
+                </SplitButtonParams>
+            </SplitButtonRef>
+            <ButtonRef Name="Mstn.Models.Dialog" Priority="30000">
+                <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+                    <AccessText>RM</AccessText>
+                    <PopupAccessText>M</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <ButtonRef Name="Mstn.Levels.Display" Priority="40000">
+                <ButtonParams CollapseToMedium="WhenGroupIsMedium" CollapseToSmall="WhenGroupIsSmall" Size="Large">
+                    <AccessText>RD</AccessText>
+                    <PopupAccessText>D</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <ButtonRef Name="Mstn.Levels.Manager" Priority="50000">
+                <ButtonParams Size="Small">
+                    <AccessText>RL</AccessText>
+                    <PopupAccessText>L</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <ButtonRef Name="Mstn.Explorer.ItemsProperties" Priority="60000">
+                <ButtonParams Size="Small">
+                    <AccessText>RP</AccessText>
+                    <PopupAccessText>P</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <SplitButtonRef Name="Mstn.Primary.More" Priority="70000">
+                <SplitButtonParams Size="Small">
+                    <AccessText>RO</AccessText>
+                    <PopupAccessText>O</PopupAccessText>
+                </SplitButtonParams>
+            </SplitButtonRef>
+        </GroupItems>
+    </Group>
+    <Group Name="PP.Group.PrimarySmall" PanelType="Collapsible" Priority="200" GroupZone="Primary">
+        <Label>Primary</Label>
+        <Icon Type="NamedIcon">
+            <NamedIcon>RibbonGroupPrimary</NamedIcon>
+        </Icon>
+        <GroupParams>
+            <AccessText>PP</AccessText>
+        </GroupParams>
+        <GroupItems>
+            <ButtonRef Name="Mstn.ProjectNavigation.Explorer" Priority="10000">
+                <ButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+                    <AccessText>PE</AccessText>
+                    <PopupAccessText>E</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <SplitButtonRef Name="Mstn.Primary.References" Priority="20000">
+                <SplitButtonParams  Size="Small">
+                    <AccessText>PR</AccessText>
+                    <PopupAccessText>R</PopupAccessText>
+                </SplitButtonParams>
+            </SplitButtonRef>
+            <ButtonRef Name="Mstn.Models.Dialog" Priority="30000">
+                <ButtonParams  Size="Small">
+                    <AccessText>PM</AccessText>
+                    <PopupAccessText>M</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <ButtonRef Name="Mstn.Levels.Display" Priority="40000">
+                <ButtonParams  Size="Small">
+                    <AccessText>PD</AccessText>
+                    <PopupAccessText>D</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <ButtonRef Name="Mstn.Levels.Manager" Priority="50000">
+                <ButtonParams Size="Small">
+                    <AccessText>PL</AccessText>
+                    <PopupAccessText>L</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <ButtonRef Name="Mstn.Explorer.ItemsProperties" Priority="60000">
+                <ButtonParams Size="Small">
+                    <AccessText>PP</AccessText>
+                    <PopupAccessText>P</PopupAccessText>
+                </ButtonParams>
+            </ButtonRef>
+            <SplitButtonRef Name="Mstn.Primary.More" Priority="70000">
+                <SplitButtonParams Size="Small">
+                    <AccessText>PO</AccessText>
+                    <PopupAccessText>O</PopupAccessText>
+                </SplitButtonParams>
+            </SplitButtonRef>
+        </GroupItems>
+    </Group>   
+    <Group Name="PP.Group.SelectionSmall" PanelType="Collapsible" Priority="300">
+            <Label>Selection</Label>
+            <Icon Type="NamedIcon">
+                <NamedIcon>RibbonGroupSelection</NamedIcon>
+            </Icon>
+            <GroupParams>
+                <AccessText>C</AccessText>
+            </GroupParams>
+            <GroupItems>
+               <ButtonRef Name="Mstn.Selection.SelectElement" Priority="100000">
+                    <ButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+                        <AccessText>CS</AccessText>
+                        <PopupAccessText>S</PopupAccessText>
+                    </ButtonParams>
+                </ButtonRef>
+                <SplitButtonRef Name="Mstn.SplitButton.Fence" Priority="200000">
+                    <SplitButtonParams  Size="Small">
+                        <AccessText>SF</AccessText>
+                        <PopupAccessText>F</PopupAccessText>
+                    </SplitButtonParams>
+                </SplitButtonRef>
+                <ButtonRef Name="Mstn.Selection.BringToFront" Priority="400000">
+                    <ButtonParams  Size="Small">
+                        <AccessText>CR</AccessText>
+                        <PopupAccessText>C</PopupAccessText>
+                    </ButtonParams>
+                </ButtonRef>
+                <GroupPanelRef Name="Mstn.Clipboard.Panel" Priority="500000" />
+            </GroupItems>
+        </Group>
+  </Groups>
+   
+  <Buttons>
+  
+  <!-- Buttons that are displayed in Ribbon Groups. These buttons contain the keyin: "Besm Menucontext" that will display gallery items.-->
+    <Button Name="OPPID.Common.PID.Database.Sync" Priority="0">
+      <Label>Sync</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>pid plantproject sync</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>SynciModel</NamedIcon>
+            </Icon>
+            <Description>Synchronize with PlantSight</Description>  
+            <SyncItemEvent>SystemEvent.ApplicationSyncUIItem</SyncItemEvent>
+            <EnableExpression>[Session]Session.IsUIItemStateEnabled("UIButtonKey_OPPID.Common.PID.Database.Sync",False)</EnableExpression>  
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button> 
+    <Button Name="OPPID.Common.PID.Database.Settings" Priority="0">
+      <Label>Settings</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>pid plantproject settings</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>SynciModelSettings</NamedIcon>
+            </Icon>
+            <Description>Synchronize PlantSight Settings</Description>
+            <SyncItemEvent>SystemEvent.ApplicationSyncUIItem</SyncItemEvent>
+            <EnableExpression>[Session]Session.IsUIItemStateEnabled("UIButtonKey_OPPID.Common.PID.Database.Settings",False)</EnableExpression>  
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button> 
+
+   <Button Name="OPPID.Common.PID.Database.OpenPlantSight" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+          <Keyin>pid plantproject openplantsight</Keyin>
+        <Icon Type="NamedIcon">
+          <NamedIcon>PS</NamedIcon>
+        </Icon>
+         <Label>PlantSight Portal</Label>
+         <Description>Open PlantSight Portal</Description>
+         <SyncItemEvent>SystemEvent.ApplicationSyncUIItem</SyncItemEvent>
+         <EnableExpression>[Session]Session.IsUIItemStateEnabled("UIButtonKey_OPPID.Common.PID.Database.Sync",False)</EnableExpression>  
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+
+    <Button Name="OPPID.Common.PID.Annotations" Priority="0">
+      <Label>Annotation</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.Annotation.Group</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>PipeAnnotation</NamedIcon>
+            </Icon>
+           <Description>Open Annotation Gallery</Description>  
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button> 
+    <Button Name="OPPID.Common.PID.UserCells" Priority="0">
+      <Label>User Cells</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.UserCells.Group</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>TanksEqpCells</NamedIcon>
+            </Icon>
+           <Description>Open User Cell Gallery</Description>  
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.PipingUtilities" Priority="0">
+      <Label>Piping Utilities</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.PipingUtilities.Group</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>Splitrun</NamedIcon>
+            </Icon>
+          <Description>Open Piping Utilities Gallery</Description>  
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.ConformanceTools" Priority="0">
+      <Label>Conformance</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.ConformanceTools.Group</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>Conformance</NamedIcon>
+            </Icon>
+           <Label>Conformance</Label>
+           <Description>Open Component Conformance Gallery</Description>            
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Export" Priority="0">
+      <Label>Export</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.Export.Group</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon/>
+            </Icon>
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Import" Priority="0">
+      <Label>Import</Label>
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" CollapseToMedium="WhenGroupIsMedium">
+        <Visibility />
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>Besm Menucontext OPPID.Common.Import.Group</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon/>
+            </Icon>
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>
+
+    <!-- Gallery Button items. These items can be displayed in the Gallery-->
+    <Button Name="OPPID.CustomAnnotations.GenericAnnotations" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component annotate</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Annotation_Generic</NamedIcon>
+        </Icon>
+        <Label>Generic</Label>
+        <Description>Generic Annotate Component</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.CustomAnnotations.EquipmentAnnotations" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component annotate oppid:BASE_EQUIPMENT_ANNOTATION</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Annotation_Equipment</NamedIcon>
+        </Icon>
+        <Label>Equipment</Label>
+        <Description>Annotate Equipment</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.CustomAnnotations.PipelineAnnotations" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component annotate oppid:BASE_PIPE_LINE_ANNOTATION</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Annotation_Pipline</NamedIcon>
+        </Icon>
+        <Label>Pipeline</Label>
+        <Description>Annotate Pipeline</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Annotation.NoteReference" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID NOTE_REFERENCE</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>notereference</NamedIcon>
+        </Icon>
+        <Label>Note Reference</Label>
+        <Description>Insert Note Reference</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Annotation.CloudbyPoints" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert bmf bmf_cloud_manual</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Cloud</NamedIcon>
+        </Icon>
+        <Label>Cloud by Points</Label>
+        <Description>Insert Cloud by Points</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Annotation.CloudonElement" Priority="0">
+         <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+         </ButtonParams>
+         <ButtonData>
+          <CommandData Type="UserKeyinCommand">
+           <UserKeyinCommand>
+            <Keyin>pid insert bmf bmf_cloud</Keyin>
+            <Icon Type="NamedIcon">
+             <NamedIcon>CloudByElement</NamedIcon>
+            </Icon>
+            <Label>Cloud on Element</Label>
+            <Description>Insert Cloud on Element</Description>
+           </UserKeyinCommand>
+          </CommandData>
+         </ButtonData>
+        </Button>
+    <Button Name="OPPID.PipingUtilities.SplitPipeRun" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid piperun split</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Splitrun</NamedIcon>
+        </Icon>
+        <Label>Split Pipe Run</Label>
+        <Description>Split Pipe Run</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.PipingUtilities.MergePipeRuns" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid piperun merge</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Merge_Pipe_Runs</NamedIcon>
+        </Icon>
+        <Label>Merge Pipe Runs</Label>
+        <Description>Merge Pipe Runs</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.PipingUtilities.ChangePipeRunPipeline" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid piperun changepipeline</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Add_Pipe_Run</NamedIcon>
+        </Icon>
+        <Label>Change Pipe Run's Pipeline</Label>
+        <Description>Change Pipe Run's Pipeline</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.PipingUtilities.ChangePipelineType" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component ChangeLineType</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>change_pipeline_type</NamedIcon>
+        </Icon>
+        <Label>Change Pipeline Type</Label>
+        <Description>Change Pipeline Type</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.UserInstrument" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component create [INSTRUMENT_CELL] ALLSCHEMAS</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>User_Instruments</NamedIcon>
+        </Icon>
+        <Label>User Instrument</Label>
+        <Description>User Instrument</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.UserEquipment" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component create [EQUIP_CELL] ALLSCHEMAS</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>User_Equipment</NamedIcon>
+        </Icon>
+        <Label>User Equipment</Label>
+        <Description>User Equipment</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.UserValve" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component create [VALVE_CELL] ALLSCHEMAS</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>User_Valve</NamedIcon>
+        </Icon>
+        <Label>User Valve</Label>
+        <Description>User Valve</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.UserComponent" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component create [SCHEMATICS_COMPONENT] ALLSCHEMAS</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>User_Component</NamedIcon>
+        </Icon>
+        <Label>User Component</Label>
+        <Description>User Component</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.Join" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid join</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Join_Tool</NamedIcon>
+        </Icon>
+        <Label>Join</Label>
+        <Description>Join</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.RemoveJoin" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid join remove</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Remove_Join</NamedIcon>
+        </Icon>
+        <Label>Remove Join</Label>
+        <Description>Remove Join</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.AddRelationship" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid relationship create</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Add_Relationship</NamedIcon>
+        </Icon>
+        <Label>Add Relationship</Label>
+        <Description>Add Relationship</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.RemoveRelationship" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid relationship remove</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Remove_Relationship</NamedIcon>
+        </Icon>
+        <Label>Remove Relationship</Label>
+        <Description>Remove Relationship</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.ConformCellsAutomatically" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid conform cellsAutomatically</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>conformcellsautomatically</NamedIcon>
+        </Icon>
+        <Label>Conform Cells Automatically</Label>
+        <Description>Automatically Conform Cells</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.AutomaticCellConformanceEditor" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid conform cellsAutomatically showEditor</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>automaticcellconformanceEditor</NamedIcon>
+        </Icon>
+        <Label>Automatic Cell Conformance Editor</Label>
+        <Description>Automatic Cell Conformance Editor</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.ConvertInstrumentLine" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid conform instrumentline</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>create_pipe_run</NamedIcon>
+        </Icon>
+        <Label>Convert Instrument Line</Label>
+        <Description>Convert Instrument Line</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.ConformanceTools.ConvertPipeRun" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid piperun create</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>create_pipe_run</NamedIcon>
+        </Icon>
+        <Label>Convert Pipe Run</Label>
+        <Description>Convert Pipe Run</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.UserCells.EquipmentUserCell" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID EQUIPMENT_USER_CELL</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>place_user_equip_cell</NamedIcon>
+        </Icon>
+        <Label>Equipment</Label>
+        <Description>Equipment from Cell Library</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.UserCells.PumpUserCell" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID EQUIPMENT_USER_PUMP_CELL</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>equipment_user_pump_cell</NamedIcon>
+        </Icon>
+        <Label>Pump</Label>
+        <Description>Pump from Cell Library</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.UserCells.ValveUserCell" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID valve_user_cell</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>place_user_valve</NamedIcon>
+        </Icon>
+        <Label>Valve</Label>
+        <Description>Valve from Cell Library</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.UserCells.OpenValveUserCell" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID open_valve_user_cell</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>place_user_valve_open</NamedIcon>
+        </Icon>
+        <Label>Open Valve</Label>
+        <Description>Open Valve from Cell Library</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.UserCells.ClosedValveUserCell" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID closed_valve_user_cell</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>place_user_valve_closed</NamedIcon>
+        </Icon>
+        <Label>Closed Valve</Label>
+        <Description>Closed Valve from Cell Library</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.UserCells.InstrumentFunctionUserCell" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID INSTRUMENT_FUNCTIONS_USER_CELL</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>place_instrument_function_user_cell</NamedIcon>
+        </Icon>
+        <Label>Instrument Function</Label>
+        <Description>Instrument Function from Cell Library</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.Assembly.Manage" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid assembly manage</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Assembly_v2</NamedIcon>
+        </Icon>
+        <Label>Assembly</Label>
+        <Description>Assembly Manager</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.Assembly.Create" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid assembly create</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>create_assemblies</NamedIcon>
+        </Icon>
+        <Label>Assembly Create</Label>
+        <Description>Assembly Create</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.Assembly.Insert" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid assembly manage</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>Assemblies_Group</NamedIcon>
+        </Icon>
+        <Label>Assembly Insert</Label>
+        <Description>Assembly Create</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.Component" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component build manage</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>ComponentManager</NamedIcon>
+        </Icon>
+        <Label>Component</Label>
+        <Description>Component Manager</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.DrawingSettings" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid model settings</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>DrawingSettings</NamedIcon>
+        </Icon>
+        <Label>Drawing</Label>
+        <Description>Drawing Settings</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.ModelValidation" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid model validate showresults</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>ModelValidate</NamedIcon>
+        </Icon>
+        <Label>Validate</Label>
+        <Description>Validate Model</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Manager.ReplaceComponent" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid component replace</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>ReplaceCells</NamedIcon>
+        </Icon>
+        <Label>Replace</Label>
+        <Description>Replace Components</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>
+    <Button Name="OPPID.Common.PID.Reports" Priority="0">
+      <ButtonParams Size="Large" CollapseToSmall="WhenGroupIsSmall" />
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>besm RunReports</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>ReportSelect</NamedIcon>
+            </Icon>
+            <Label>External Reports</Label>
+            <Description>Run External Reports</Description>
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>
+    
+    <Button Name="OPPID.Common.PID.StandardPreferences" Priority="0">
+      <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+      </ButtonParams>
+      <ButtonData>
+        <CommandData Type="UserKeyinCommand">
+          <UserKeyinCommand>
+            <Keyin>pid model standardpreferences</Keyin>
+            <Icon Type="NamedIcon">
+              <NamedIcon>StandardPreferences</NamedIcon>
+            </Icon>
+            <Label>Preferences</Label>
+            <Description>Standard Preferences</Description>
+          </UserKeyinCommand>
+        </CommandData>
+      </ButtonData>
+    </Button>    
+    <Button Name="OPPID.Common.PID.PlacePipeRun" Priority="0">
+     <ButtonParams Size="Small" CollapseToSmall="WhenGroupIsSmall">
+     </ButtonParams>
+     <ButtonData>
+      <CommandData Type="UserKeyinCommand">
+       <UserKeyinCommand>
+        <Keyin>pid insert OpenPlant_PID PIPING_NETWORK_SEGMENT</Keyin>
+        <Icon Type="NamedIcon">
+         <NamedIcon>placepipe</NamedIcon>
+        </Icon>
+        <Label>Pipe Run</Label>
+        <Description>Pipe Run</Description>
+       </UserKeyinCommand>
+      </CommandData>
+     </ButtonData>
+    </Button>      
+    
+  </Buttons>
+
+  <SplitButtons>
+    <SplitButton Name="OPPID.Common.Export.Buttons" Priority="100">
+      <Label>Exports</Label>
+      <Description>Exports</Description>
+      <SplitButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+      </SplitButtonParams>
+      <SplitButtonData>
+        <DropDownContent Type="MenuItems">
+          <MenuItems>
+            <MenuItem Name="OPPID.Export.ECXML" Priority="15000">
+              <Label>ECXML</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid model export ecxml</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>ExportECXML</NamedIcon>
+                    </Icon>
+                    <Label>ECXML</Label>
+                    <Description>Export ECXML</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>
+          <!--  <MenuItem Name="OPPID.Export.OWL" Priority="15000">
+              <Label>OWL</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid model export publishopenplantidgntoowl</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>ExportOWL</NamedIcon>
+                    </Icon>
+                    <Label>OWL</Label>
+                    <Description>Export OWL</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem> -->
+         </MenuItems>
+        </DropDownContent>
+      </SplitButtonData>
+    </SplitButton>
+    <SplitButton Name="OPPID.Common.Import.Buttons" Priority="100">
+      <Label>Imports</Label>
+      <Description>Imports</Description>
+      <SplitButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+      </SplitButtonParams>
+      <SplitButtonData>
+        <DropDownContent Type="MenuItems">
+          <MenuItems>
+            <MenuItem Name="OPPID.Import.IDgnList" Priority="15000">
+              <Label>IDgnList</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid model import idgnlist</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>ImportiDgnList</NamedIcon>
+                    </Icon>
+                    <Label>IDgnList</Label>
+                    <Description>Import IDgnList</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>
+            <MenuItem Name="OPPID.Import.AI" Priority="15000">
+              <Label>AI</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid model Import ai</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>ImportOWL</NamedIcon>
+                    </Icon>
+                    <Label>AI</Label>
+                    <Description>Import From AI</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>            
+            <!-- <MenuItem Name="OPPID.Import.OWL" Priority="15000">
+              <Label>OWL</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid model import owllist</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>ImportOWL</NamedIcon>
+                    </Icon>
+                    <Label>OWL</Label>
+                    <Description>Import OWL</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem> -->
+         </MenuItems>
+        </DropDownContent>
+      </SplitButtonData>
+    </SplitButton>
+    <SplitButton Name="OPPID.Common.LoopUtilities.Buttons" Priority="100">
+      <Label>Loops</Label>
+      <Description>Loop Utilities</Description>
+      <SplitButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+      </SplitButtonParams>
+      <SplitButtonData>
+        <DropDownContent Type="MenuItems">
+          <MenuItems>
+            <MenuItem Name="OPPID.LoopUtilities.AddComponentToLoop" Priority="15000">
+              <Label>Add To Loop</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid loop addcomponent</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>LoopAdd</NamedIcon>
+                    </Icon>
+                    <Description>Add Component To Loop</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>
+            <MenuItem Name="OPPID.LoopUtilities.RemoveComponentFromLoop" Priority="15000">
+              <Label>Remove From Loop</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                    <Keyin>pid loop removecomponent</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>LoopRemove</NamedIcon>
+                    </Icon>
+                   <Description>Remove Component From Loop</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>
+         </MenuItems>
+        </DropDownContent>
+      </SplitButtonData>
+    </SplitButton>
+
+    <SplitButton Name="OPPID.Common.Reports.Buttons" Priority="100">
+      <Label>Reports</Label>
+      <Description>Reports</Description>
+      <SplitButtonParams CollapseToSmall="WhenGroupIsSmall" Size="Large">
+      </SplitButtonParams>
+      <SplitButtonData>
+        <DropDownContent Type="MenuItems">
+          <MenuItems>
+            <MenuItem Name="OPPID.Common.Reports.External" Priority="15000">
+              <Label>External Reports</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="UserKeyinCommand">
+                  <UserKeyinCommand>
+                       <Keyin>besm RunReports</Keyin>
+                    <Icon Type="NamedIcon">
+                      <NamedIcon>ReportSelect</NamedIcon>
+                    </Icon>
+                    <Label>External Reports</Label>
+                    <Description>Run External Reports</Description>
+                  </UserKeyinCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>
+            
+            <MenuItem Name="OPPID.Common.Reports.InDrawing" Priority="15000">
+              <Label>In Drawing Reports</Label>
+              <MenuItemParams ShowCmdIcon="true">
+                <AccessText>3</AccessText>
+              </MenuItemParams>
+              <MenuItemData>
+                <CommandData Type="NamedCommand">
+                    <NamedCommand>Mstn.Reports.Dialog</NamedCommand>
+                </CommandData>
+              </MenuItemData>
+            </MenuItem>
+            
+         </MenuItems>
+        </DropDownContent>
+      </SplitButtonData>
+    </SplitButton>
+    
+  </SplitButtons>
+
+</RibbonItems>
