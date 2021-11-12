@@ -1,0 +1,1343 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<BuildContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\..\bsicommon\build\PartFile.xsd">
+    <Product Name="OPPID" PrgOutputDir="OPPID" SaveProduct="true" BuildInstallSet="true" SaveTranskit="true">
+         <FeatureAspects  Template="${OutputRootDir}\Build\OPPID\PowerPlatform\FeatureAspectsTemplate.xml"
+                         Instance="${OutputRootDir}\Build\OPPID\PowerPlatform\OpenPlantPID.xml" />  
+
+        <SubPart PartName="OpenPlantPIDFeatureAspects"/>
+        <SubPart PartName="OpenPlantPIDExe" />
+        <SubPart PartName="opcommontools"                   PartFile="opcommontools"            Repository="opcommontools" />
+        <SubPart PartName="PlantiModelECPlugin"             PartFile="ecplugins"                Repository="ecplugins" />
+        <SubPart PartName="spectools"                       PartFile="Spectools"                Repository="spectools" />     
+        <SubPart PartName="opconfiguration"                 PartFile="opconfiguration"          Repository="opconfiguration" />            
+        <SubPart PartName="oppid" />        
+        <SubPart PartName="opef"                            PartFile="opef"                     Repository="opef" />
+        <SubPart PartName="OpenPlantPIDSDK" />
+        <SubPart PartName="OpenPlantPIDSDKExamples" />
+        
+        <!-- Ribbon parts -->
+        <SubPart PartName="OPPID_CommonRibbonRsc" />
+        <SubPart PartName="OPPIDRibbonRsc" />
+        <SubPart PartName="OPPID_ISORibbonRsc" />
+        <SubPart PartName="OPPID_DINRibbonRsc" />
+        <SubPart PartName="OPPID_APRibbonRsc" />
+        <SubPart PartName="OPPID_KKSRibbonRsc" />
+        <SubPart PartName="OPPIDIcons" />
+        
+        <Directories DirectoryListName="PowerPlatform"      PartFile="MstnPlatform\PowerPlatform"            Repository="PowerPlatform" />
+        <Directories DirectoryListName="Configuration"      PartFile="MstnPlatform\PowerPlatform"            Repository="PowerPlatform" />        
+        <Directories DirectoryListName="Documentation"      PartFile="MstnPlatform\PowerPlatform"            Repository="PowerPlatform"/>
+        <Directories DirectoryListName="OpenPlantPID" />
+        <!-- this must be after PowerPlatform so it overrides -->
+        
+        <!-- Transkit Info -->
+        <SubPart PartName="TransKitTools" PartFile="TransKitTools" Repository="TransKitTools" />
+        
+        <!-- Installer info -->
+        <SubPart PartName="PowerProductBundleComponents" PartFile="install\PowerProductInstaller" Repository="PowerProductConfig"/>
+        <SubPart PartName="InstallFrameworkBase" PartFile="InstallFramework" Repository="InstallFramework"/>
+        <SubPart PartName="OPPIDInstallerFiles"/>
+        <InstallerWixFile SourceFile="install/OpenPlantPID" />
+        <WixBundleFile SourceFile="OPPIDInstallerFiles\OPPID" LanguagePackBundle="OPPIDInstallerFiles\OPPIDBundle_LanguagePack" LanguageBundle="OPPIDInstallerFiles\OPPID" />
+        <!-- Installer stuff.  Your extension will automatically be picked up in the MSI, no need to edit this stuff,
+             unless you need to add a new external prerequisite package to the Wix bundle installer -->
+             
+        <SubPart PartName="OpenPlantPIDDocumentation" />
+        <!--<SubPart PartName="OPPIDAutomationFilesDep" /> -->
+    </Product>
+    
+    <Part Name="IDE" BMakeFile="privmki\openIDE.mke"/>
+    
+    <Part Name="NugetSQLite">
+       <!-- <SubPart PartName="NugetSQLiteCore" /> -->
+        <NuGetPackage targetFramework=".NETFramework4.5">System.Data.SQLite</NuGetPackage>
+        <Bindings>
+            <Assemblies ProductDirectoryName="OpenPlantAssemblies">
+                Nuget\net40\System.Data.SQLite.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <!--
+    <Part Name="NugetSQLiteCore">
+        <NuGetPackage targetFramework=".NETFramework4.5">System.Data.SQLite.Core</NuGetPackage>
+        <Bindings>
+            <Assemblies ProductDirectoryName="OpenPlantAssemblies">
+                Nuget\net40\SQLite.Interop.dll
+            </Assemblies>
+        </Bindings>
+    </Part>	
+	-->
+
+    <!-- Common Ribbon -->
+    <Part Name="OPPID_CommonRibbonRsc" BMakeFile="ribbon\Common\OPPID_CommonRibbonRsc.mke">
+        <SubPart PartName="HeaderFiles"     PartFile="DgnPlatform\DgnPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="MdlTools"        PartFile="RmgrTools\RmgrTools"    Repository="PPBase" />
+        <Bindings>
+            <Files      ProductDirectoryName="RibbonRSC" >
+                Delivery\Ribbon\OPPID_CommonRibbon.rsc
+                <TransKit SourceDirectory="Delivery\TransKit\OPPID_CommonRibbonRsc" />
+            </Files>
+        </Bindings>
+    </Part>
+    
+    <!-- Standard Imperial/Metric Ribbon -->
+    <Part Name="OPPIDRibbonRsc" BMakeFile="ribbon\Standard\OPPIDRibbonRsc.mke">
+        <SubPart PartName="HeaderFiles"     PartFile="DgnPlatform\DgnPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="MdlTools"        PartFile="RmgrTools\RmgrTools"    Repository="PPBase" />
+        <Bindings>
+            <Files      ProductDirectoryName="STDRibbon" >
+                Delivery\Ribbon\OPPIDRibbon.rsc
+                <TransKit SourceDirectory="Delivery\TransKit\OPPIDRibbonRsc" />
+            </Files>
+        </Bindings>
+    </Part>
+    
+    <!-- Iso Ribbon -->
+    <Part Name="OPPID_ISORibbonRsc" BMakeFile="ribbon\ISO\OPPID_ISORibbonRsc.mke">
+        <SubPart PartName="HeaderFiles"     PartFile="DgnPlatform\DgnPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="MdlTools"        PartFile="RmgrTools\RmgrTools"    Repository="PPBase" />
+        <Bindings>
+            <Files      ProductDirectoryName="ISORibbon" >
+                Delivery\Ribbon\OPPID_ISORibbon.rsc
+                <TransKit SourceDirectory="Delivery\TransKit\OPPID_ISORibbonRsc" />
+            </Files>
+        </Bindings>
+    </Part>
+    
+    <!-- Din Ribbon -->
+    <Part Name="OPPID_DINRibbonRsc" BMakeFile="ribbon\DIN\OPPID_DINRibbonRsc.mke">
+        <SubPart PartName="HeaderFiles"     PartFile="DgnPlatform\DgnPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="MdlTools"        PartFile="RmgrTools\RmgrTools"    Repository="PPBase" />
+        <Bindings>
+            <Files      ProductDirectoryName="DINRibbon" >
+                Delivery\Ribbon\OPPID_DINRibbon.rsc
+                <TransKit SourceDirectory="Delivery\TransKit\OPPID_DINRibbonRsc" />
+            </Files>
+        </Bindings>
+    </Part>
+    
+    <!-- AP Ribbon -->
+    <Part Name="OPPID_APRibbonRsc" BMakeFile="ribbon\AP\OPPID_APRibbonRsc.mke">
+        <SubPart PartName="HeaderFiles"     PartFile="DgnPlatform\DgnPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="MdlTools"        PartFile="RmgrTools\RmgrTools"    Repository="PPBase" />
+        <Bindings>
+            <Files      ProductDirectoryName="APRibbon" >
+                Delivery\Ribbon\OPPID_APRibbon.rsc
+                <TransKit SourceDirectory="Delivery\TransKit\OPPID_APRibbonRsc" />
+            </Files>
+        </Bindings>
+    </Part>
+
+    <!-- KKS Ribbon -->
+    <Part Name="OPPID_KKSRibbonRsc" BMakeFile="ribbon\KKS\OPPID_KKSRibbonRsc.mke">
+        <SubPart PartName="HeaderFiles"     PartFile="DgnPlatform\DgnPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="MdlTools"        PartFile="RmgrTools\RmgrTools"    Repository="PPBase" />
+        <Bindings>
+            <Files      ProductDirectoryName="KKSRibbon" >
+                Delivery\Ribbon\OPPID_KKSRibbon.rsc
+                <TransKit SourceDirectory="Delivery\TransKit\OPPID_KKSRibbonRsc" />
+            </Files>
+        </Bindings>
+    </Part>
+
+    <!-- Icons for Ribbon -->
+    <Part Name="OPPIDIcons" BMakeFile="OPPIDIcons\OPPIDIcons.mke">
+        <SubPart PartName="MdlTools" PartFile="RmgrTools\RmgrTools" Repository="PPBase"/>
+        <Bindings>
+            <Files ProductDirectoryName="Icons">Delivery\OPPIDIcons.rsc</Files>
+        </Bindings>
+    </Part>
+    
+    
+    <Part Name="OpenPlantPIDExe"        BMakeFile="OPPIDBuildReqs\OpenPlantPID.mke" >
+        <!-- Product specific <SubPart> elements go here -->
+        <SubPart PartName="PowerPlatform"               PartFile="MstnPlatform\PowerPlatform"        Repository="PowerPlatform"        />
+        <SubPart PartName="StaticAppData"               PartFile="MstnAppData"          Repository="Mstnappdata" />
+
+        <!-- This is required for dgnlibs -->
+        <SubPart PartName="MstnProductDgnlibs"          PartFile="MstnAppData"          Repository="Mstnappdata" />
+        <!-- This is required for RibbonBar -->
+        <SubPart PartName="MstnRibbonRsc"               PartFile="MstnAppData"          Repository="Mstnappdata" />
+        <!-- This is required for the productExe.lib, it is used when linking BuildingDesigner.exe -->
+        <SubPart PartName="UstationExeStaticLib"        PartFile="MstnPlatform\PowerPlatform"        Repository="PowerPlatform"        />
+
+        <SubPart PartName="RmgrToolsDll" PartFile="RmgrTools\RmgrTools" Repository="PPBase" />
+        <Bindings>
+            <Files ProductDirectoryName="PowerProductName" ExtractReg="true">
+                Delivery\OpenPlantPID.exe
+                Delivery\OpenPlantPID.exe.config
+                Delivery\OPPID.FeatureTracking.rsc
+            </Files>
+
+            <!-- <TransKit SourceDirectory="Delivery\Transkit"/>  -->
+            <Files ProductDirectoryName="PowerProductName" BindToWixBuild="true">
+                ProductDelivery\Bentley.PowerPlatform.FeatureAspects.dll
+                ProductDelivery\InstallerIcons.dll
+                ProductDelivery\manageExceptionLogs.hta
+            </Files>
+            <Files Required="false" BindToWixBuild="true">Delivery\InstallerBundleIcon.ico</Files>
+            <Files ProductDirectoryName="ConfigDir"     ProductSubDirectory="system">Delivery\Config\system\*.cfg</Files>
+            <Files ProductDirectoryName="WorkSpaceData" ProductSubDirectory="Data">Delivery\WorkSpace\Data\*.xml</Files>
+            <Files ProductDirectoryName="DocsRsc">Delivery\Docs\OpenPlantPID.rsc</Files>
+            <Files ProductDirectoryName="DocsRsc">Delivery\Docs\OpenPlantPIDExt.rsc</Files>
+        </Bindings>
+    </Part>
+
+    <Part Name="OpenPlantPIDFeatureAspects"     FeatureAspectBuild="true"       BMakeFile="OPPIDBuildReqs\OpenPlantPID.featureaspects.mke"        BMakeOptions="+dGenSchemaOnly" >
+        <SubPart PartName="FeatureAspectsPreReq" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+    </Part>
+    
+    <Part Name="Geometry" BMakeFile="framework\Geometry\geometry.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFGeometry.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFGeometry"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="PrimitiveUtilities" BMakeFile="framework\CadSystem\MS\PrimitiveUtils\PrimitiveUtils.mke">
+        <SubPart PartName="opcommontools"            PartFile="opcommontools"  Repository="opcommontools" />
+        <SubPart PartName="ClrApp-DgnCommonGeometry" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="Geometry" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSPrimitiveUtils.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="BmfCadSysMSUtilities" BMakeFile="framework\CadSystem\MS\Utilities\Utilities.mke">
+        <SubPart PartName="opcommontools"        PartFile="opcommontools"  Repository="opcommontools" />
+        <SubPart PartName="XDbProvider"          PartFile="spectools"      Repository="spectools"/>
+        <SubPart PartName="Geometry" />
+        <SubPart PartName="Bentley.MicroStation" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSUtilities.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="BmfCadSysInterfaces" BMakeFile="framework\CadSystem\Interfaces\Interfaces.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="Geometry" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysInterfaces.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysInterfaces"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="BmfCadSysMSPrimitiveFactory" BMakeFile="framework\CadSystem\MS\PrimitivesFactory\PrimitivesFactory.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="Geometry" />
+        <SubPart PartName = "BmfCadSysInterfaces" />
+        <SubPart PartName = "BmfCadSysMSUtilities" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSPrimitivesFactory.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysMSPrimitivesFactory"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="BmfPrimitives" BMakeFile="framework\Primitives\BmfPrimitives.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="Geometry" />
+        <SubPart PartName = "BmfCadSysInterfaces" />
+        <SubPart PartName="BmfCadSysMSPrimitiveFactory" />
+        <SubPart PartName="PrimitiveUtilities" /> 
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFPrimitives.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFPrimitives"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="CadSystem" BMakeFile="framework\CadSystem\CadSystem.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="Geometry" />
+        <SubPart PartName = "BmfCadSysInterfaces" />
+        <SubPart PartName="BmfPrimitives" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSys.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSys"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MSUtilities" BMakeFile="framework\CadSystem\MS\MSUtilities\MSUtilities.mke">
+        <SubPart PartName="opcommontools"          PartFile="opcommontools"  Repository="opcommontools" />
+        <SubPart PartName="DgnPlatformNETAssembly" PartFile="DgnPlatformNET\DgnPlatformNET" Repository="PowerPlatform" />
+        <SubPart PartName="MstnPart-TemplateUtils" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSMSUtilities.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysMSMSUtilities"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadPrimitives" BMakeFile="framework\CadSystem\MS\Primitives\Primitives.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName = "BmfCadSysInterfaces" />         
+        <SubPart PartName="Geometry" />
+        <SubPart PartName="BmfCadSysMSUtilities" />      
+        <SubPart PartName="CadSystem" />    
+        <SubPart PartName="BmfPrimitives" />        
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSPrimitives.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysMSPrimitives"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadElementUserInterface" BMakeFile="framework\CadSystem\MS\MsCadElementUserInterface\MsCadElementUserInterface.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="CadSystem" /> 
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSUserInterface.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadFileIOServices" BMakeFile="framework\CadSystem\MS\FileIOServices\FileIOServices.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="CadSystem" /> 
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSFileIOServices.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+
+    <Part Name="PidBimGraphicsConverter" BMakeFile="framework\Persistence\PidBimGraphicsConverter\PidBimGraphicsConverter.mke">
+        <SubPart PartName="iModel02Fwk"                         PartFile="SdkDistribution"   Repository="SdkDistribution"/>
+        <SubPart PartName="OPBimClientRunTimes"                 PartFile="OPBimClient"       Repository="OPBimClient" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\PidBimGraphicsConverter.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadIDGNFileIO" BMakeFile="framework\CadSystem\MS\FileIOServices\IDGNFileIO\IDGNFileIO.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="DgnECPluginDLL"          PartFile="DgnECPlugin\DgnECPlugin"          Repository="PowerPlatform" />
+        <SubPart PartName = "BmfCadSysMSUtilities" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSIDGNFileIO.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysMSIDGNFileIO"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadAxsysFileIO" BMakeFile="framework\CadSystem\MS\FileIOServices\axsysFileIO\axsysFileIO.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+            <SubPart PartName="MsCadIDGNFileIO" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSAxsysFileIO.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadSysCadElement" BMakeFile="framework\CadSystem\MS\CadElement\CadElement.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="BmfPrimitives" />
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <SubPart PartName="CadSystem" />
+        <SubPart PartName="Geometry" />
+        <SubPart PartName="BmfCadSysMSUtilities" />
+        <SubPart PartName="MsCadPrimitives" />
+        <SubPart PartName="MsCadElementUserInterface" />
+        <SubPart PartName="MsCadFileIOServices" />
+        <SubPart PartName="MsCadIDGNFileIO" />
+        <SubPart PartName="MsCadAxsysFileIO" />
+        <SubPart PartName ="MSUtilities" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSCadElement.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysMSCadElement"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadElementHandler" BMakeFile="framework\CadSystem\MS\ElementHandler\ElementHandler.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="CadSystem" />  
+        <SubPart PartName="MsCadSysCadElement" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSElementHandler.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.CadSysMSElementHandler"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="MsCadUserInterface" BMakeFile="framework\CadSystem\MS\MsUserInterface\msuserinterface.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="MsCadSysCadElement" /> 
+        <SubPart PartName="BmfCadSysMSUtilities" /> 
+        <SubPart PartName="MsCadPrimitives" /> 
+        <SubPart PartName="BmfPrimitives" /> 
+        <SubPart PartName="Geometry" /> 
+        <SubPart PartName="CadSystem" /> 
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.CadSysMSUserInput.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="FW_OMInterfaces" BMakeFile="framework\ominterfaces\ominterfaces.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"         Repository="ecplugins" />
+        <SubPart PartName="OPBimClientRunTimes"                 PartFile="OPBimClient"       Repository="OPBimClient" />  <!-- needed for DgnDbInteropStatus -->
+        <SubPart PartName="Geometry" /> 
+        <SubPart PartName="CadSystem" /> 
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFOMInterfaces.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="FW_Catalog" BMakeFile="framework\catalog\catalog.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" /> 
+        <SubPart PartName="CadSystem" /> 
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="ResourceManager"    PartFile="OPEF-ResourceManager"         Repository="OPEF-ResourceManager" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFCatalog.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFCatalog"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <!--     <Part Name="FW_Logging" BMakeFile="framework\logging\logging.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" /> 
+        <SubPart PartName="CadSystem" /> 
+        <SubPart PartName="FW_OMInterfaces" /> 
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <SubPart PartName="BmfCadSysMSUtilities" />
+        <SubPart PartName="MsCadPrimitives" />
+        <SubPart PartName="BmfPrimitives" />
+        <SubPart PartName="FW_Catalog" />
+        <SubPart PartName="Geometry" /> 
+        <SubPart PartName="MSUtilities" /> 
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.MF.Logging.dll
+            </Assemblies>
+        </Bindings>
+    </Part> -->
+    <Part Name="FW_Utilities" BMakeFile="framework\Utilities\Utilities.mke">
+        <SubPart PartName="PlantiModelECPlugin"    PartFile="ecplugins"             Repository="ecplugins" />
+        <SubPart PartName="opcommontools"          PartFile="opcommontools"         Repository="opcommontools" /> 
+        <SubPart PartName="DrawingUpgrade"         PartFile="opcommontools"         Repository="opcommontools" />        
+        <SubPart PartName="OpenPlantCore"          PartFile="OpenPlantCore"         Repository="OpenPlantCore" />
+        <SubPart PartName="Geometry" />  
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="FW_Catalog" />
+        <SubPart PartName="CadSystem" /> 
+        <SubPart PartName="MsCadPrimitives" />
+        <SubPart PartName="BmfCadSysMSUtilities" />
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <SubPart PartName ="MSUtilities" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFUtilities.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFUtilities"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    <Part Name="FW_GraphicsSystem" BMakeFile="framework\GraphicsSystem\GraphicsSystem.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="CadSystem" /> 
+        <SubPart PartName="MsCadPrimitives" />
+   
+        <SubPart PartName="FW_OMInterfaces" />
+
+        <SubPart PartName="Geometry" /> 
+          
+        <SubPart PartName="FW_Utilities" />
+        <SubPart PartName="BmfCadSysMSUtilities" />
+  
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFGraphicsSystem.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+     <Part Name="FW_DesignHistory" BMakeFile="framework\designhistory\DesignHistory.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="DgnECPluginDLL"          PartFile="DgnECPlugin\DgnECPlugin"          Repository="PowerPlatform" />
+        <SubPart PartName="ustation" PartFile="MstnPlatform\PowerPlatform" Repository="PowerPlatform" />
+        
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFDesignHistory.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    <Part Name="FW_Persist_AlternateRepBase" BMakeFile="framework\Persistence\AlternateRepositoryBase\AlternateRepositoryBase.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="CadSystem" /> 
+        <SubPart PartName="FW_OMInterfaces" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFPersistenceAltRepBase.dll
+            </Assemblies>
+        </Bindings>
+    </Part>
+    <!-- <Part Name="FW_Persist_DGN" BMakeFile="framework\Persistence\Persistence\DGN\DGN.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+         
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MF.DGNECPluginExtension.dll
+            </Assemblies>
+        </Bindings>
+    </Part> -->
+    <!-- TODO - this is a duplicate part, it is in the ecplugins.partfile.xml and should not be here -->
+    <!-- <Part Name="PlantBIMECPlugin" >
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"         Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"     Repository="opcommontools" />
+        <SubPart PartName="OPBimClientRunTimes"                 PartFile="OPBimClient"       Repository="OPBimClient" />
+    </Part> --> 
+
+    
+
+    <Part Name="FW_Persist_PlantBim" BMakeFile="framework\Persistence\bim\bim.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"     Repository="opcommontools" />
+        <SubPart PartName="DrawingUpgrade"                      PartFile="opcommontools"     Repository="opcommontools" />
+        <SubPart PartName="OPBimClientRunTimes"                 PartFile="OPBimClient"       Repository="OPBimClient" />
+        <SubPart PartName="ModelSync" />
+        <SubPart PartName="PrimitiveUtilities" />
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="CadSystem" />
+        <SubPart PartName="FW_Utilities" />
+        <SubPart PartName="PlantiModelECPlugin"             PartFile="ecplugins"                Repository="ecplugins" />
+        <SubPart PartName="PidBimGraphicsConverter" />
+        
+        <Bindings>          
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFBIMAdapter.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFBIMAdapter"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    
+    <Part Name="ModelSync">
+        <SubPart PartName="Differencing"                    PartFile="ModelSync"                            Repository="ModelSync"/>
+        <SubPart PartName="DesignSyncControls"              PartFile="ModelSync"                            Repository="ModelSync"/>
+    </Part> 
+    <Part Name="FW_Persist_PersistenceManager" BMakeFile="framework\Persistence\PersistenceManager\PersistenceManager.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <!-- <SubPart PartName="FW_Persist_SQL" /> -->
+        <SubPart PartName="ModelSync" />
+        <SubPart PartName="FW_Persist_PlantBim" />
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <SubPart PartName="FW_Persist_AlternateRepBase" />
+        <SubPart PartName="FW_GraphicsSystem" />
+        <SubPart PartName="FW_DesignHistory" />
+        <SubPart PartName="FW_Utilities" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFPersistenceManager.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFPersistenceManager"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+
+    <Part Name="FW_ComponentManager" BMakeFile="framework\ComponentManager\ComponentManager.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+        <SubPart PartName="MsCadSysCadElement" /> 
+        <SubPart PartName="MenuNavigation"    PartFile="OPEF-CommonUITools"                   Repository="OPEF-CommonUITools" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFComponentManager.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFComponentManager"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_AssemblyManager" BMakeFile="framework\AssemblyManager\AssemblyManager.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFAssemblyManager.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFAssemblyManager"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_PWIntUtilities" BMakeFile="framework\ProjectWise/Utility/pwintutils.mke">
+        <SdkSource>PW-SDK</SdkSource>
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <!-- <SubPart PartName="pwapiwrapper"                PartFile="aaapi"                                Repository="dms" /> -->
+        <SubPart PartName="ustation" PartFile="MstnPlatform\PowerPlatform" Repository="PowerPlatform" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\pwoppidutility.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_Tools" BMakeFile="framework\Tools\Tools.mke">
+        
+        <SubPart PartName="opcommontools"        PartFile="opcommontools"  Repository="opcommontools" />
+        <!-- <SubPart PartName="pwapiwrapper"                PartFile="aaapi"                                Repository="dms" /> -->
+        <SubPart PartName="Bentley.MicroStation" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="FW_Catalog" />
+        <SubPart PartName="FW_GraphicsSystem" />
+        <SubPart PartName="FW_Utilities" />
+        <SubPart PartName="CadSystem" />  
+        <SubPart PartName="BmfPrimitives" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFTools.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFTools"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_BMFPropertyServices" BMakeFile="framework\BMFPropertyServices/BMFPropertyServices.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFPropertyServices.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_PipingSpecification" BMakeFile="framework\PipingSpecification/PipingSpecification.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <!-- <SubPart PartName="pwapiwrapper"                PartFile="aaapi"                                Repository="dms" /> -->
+        <SubPart PartName="FW_Utilities" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFPipeSpec.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFPipeSpec"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_SpecRecordSelection" BMakeFile="framework\OpenPlant/SpecRecordSelection/SpecRecordSelection.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <!-- <SubPart PartName="pwapiwrapper"                PartFile="aaapi"                                Repository="dms" /> -->
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFOpenPlantSpecRecordSelection.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFOpenPlantSpecRecordSelection"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_SpecReader" BMakeFile="framework\/OpenPlant/SpecReader/SpecReader.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="spectools"                PartFile="Spectools"                                Repository="spectools" /> 
+        <SubPart PartName="FW_SpecRecordSelection" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFOpenPlantSpecReader.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFOpenPlantSpecReader"/>
+            </Assemblies>
+            
+        </Bindings>
+    </Part> 
+    <Part Name="FW_SpecManager" BMakeFile="framework\/OpenPlant/SpecManager/SpecManager.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <!-- <SubPart PartName="pwapiwrapper"                PartFile="aaapi"                                Repository="dms" /> -->
+        <SubPart PartName="FW_SpecReader" />
+        <SubPart PartName="FW_SpecRecordSelection" />
+        <SubPart PartName="FW_PipingSpecification" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="FW_Utilities" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFOpenPlantSpecManager.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFOpenPlantSpecManager"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_BusinessKeyControls" BMakeFile="framework\BusinessKeyControls/BusinessKeyControls.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="TelerikWinForms"                     PartFile="TelerikWinForms"              Repository="TelerikWinForms" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_BMFPropertyServices" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFBusinessKeyControls.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFBusinessKeyControls"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_ValidationChecker" BMakeFile="framework\ValidationChecker/ValidationChecker.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_BusinessKeyControls" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFValidationChecker.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFValidationChecker"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_ConversionFramework" BMakeFile="framework\Conversion/ConversionFramework.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+         <SubPart PartName="FW_Utilities" />
+              <SubPart PartName="CadSystem" />  
+                <SubPart PartName="FW_GraphicsSystem" />
+                <SubPart PartName="FW_Catalog" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFConversion.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFConversion"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_ObjectModel" BMakeFile="framework\ObjectModel/ObjectModel.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="DrawingUpgrade"                      PartFile="opcommontools"                Repository="opcommontools" />                
+        <SubPart PartName="FW_ComponentManager" />
+        <SubPart PartName="FW_ValidationChecker" />
+        <SubPart PartName="FW_AssemblyManager" />
+        <SubPart PartName="FW_Tools" />
+        <SubPart PartName="FW_PipingSpecification" />
+        <SubPart PartName="FW_ConversionFramework" />
+        <SubPart PartName="NugetSQLiteInterop"                 PartFile="opconfiguration"              Repository="opconfiguration" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFObjectModel.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFObjectModel"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_PropertyEnabler" BMakeFile="framework\PropertyEnabler/PropertyEnabler.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="FW_BusinessKeyControls" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFPropertyEnabler.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="FW_AppInterface" BMakeFile="framework\AppInterface/AppInterface.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_PropertyEnabler" />
+        <SubPart PartName="FW_ObjectModel" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFAppInterface.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+     <Part Name="FW_BusinessKeyControlsAddins" BMakeFile="framework\BusinessKeyControls/Addins/Addins.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_AppInterface" />
+        <SubPart PartName="FW_ObjectModel" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFBusinessKeyControlsAddins.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.MFBusinessKeyControlsAddins"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+     <Part Name="FW_Selection" BMakeFile="framework\Selection/Selection.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_ObjectModel" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.Plant.MFSelection.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+     <Part Name="FW_ECBrowserExtensions" BMakeFile="framework\ECBrowserExtensions/ECBrowserExtensions.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="FW_ComponentManager" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesBMF">
+                Delivery\Bentley.EC.ECBrowserExtensions.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.EC.ECBrowserExtensions"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    
+    
+    <Part Name="SCH_Cells" BMakeFile="schematics\Cells/Cells.mke">
+        
+        <SubPart PartName="opcommontools"        PartFile="opcommontools"  Repository="opcommontools" />
+        <SubPart PartName="Bentley.MicroStation" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="CadSystem" />  
+        <SubPart PartName="FW_GraphicsSystem" />
+        
+        <SubPart PartName="FW_Utilities" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesSCH">
+                Delivery\Bentley.Plant.SchematicsCells.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.SchematicsCells"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="SCH_Interfaces" BMakeFile="Schematics/Interfaces/Interfaces.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="BmfPrimitives" />
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="CadSystem" /> 
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesSCH">
+                Delivery\Bentley.Plant.SchematicsInterfaces.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="SCH_Schematics" BMakeFile="Schematics/Schematics.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="DrawingUpgrade"                      PartFile="opcommontools"                Repository="opcommontools" />        
+        <SubPart PartName="FW_Persist_AlternateRepBase" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="SCH_Interfaces" />
+        <SubPart PartName="FW_ComponentManager" />
+        <SubPart PartName="MsCadSysCadElement" /> 
+        <SubPart PartName="FW_AppInterface" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesSCH">
+                Delivery\Bentley.Plant.Schematics.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.Schematics"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    
+    <Part Name="SCH_Catalog" BMakeFile="Schematics/catalog/catalog.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="DrawingUpgrade"                      PartFile="opcommontools"                Repository="opcommontools" />        
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="FW_ComponentManager" />
+        <SubPart PartName="FW_BusinessKeyControls" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+        <SubPart PartName="SCH_Cells" />
+        <SubPart PartName="SCH_Interfaces" />
+        <SubPart PartName="SCH_Schematics" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssembliesSCH">
+                Delivery\Bentley.Plant.SchematicsCatalog.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.SchematicsCatalog"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="PID_Interfaces" BMakeFile="pid/Interfaces/Interfaces.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="SCH_Cells" />
+        <SubPart PartName="SCH_Interfaces" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidInterfaces.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="PID_PDWSpecProvider" BMakeFile="pid/PDWSpecProvider/PDWSpecProvider.mke">
+        <SubPart PartName="opcommontools"        PartFile="opcommontools"  Repository="opcommontools" />
+        <SubPart PartName="XDbProvider"          PartFile="spectools"      Repository="spectools"/>
+        <SubPart PartName="XDbWrapper"           PartFile="spectools"      Repository="spectools"/>    
+        <SubPart PartName="Bentley.MicroStation" PartFile="MstnPlatform\PowerPlatform"  Repository="PowerPlatform" />
+        <SubPart PartName="CadSystem" />  
+        <SubPart PartName="FW_PipingSpecification" />
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="FW_Utilities" />
+        <SubPart PartName="SCH_Interfaces" />
+        <SubPart PartName="PID_Interfaces" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidPDWSpecProvider.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidPDWSpecProvider"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    <Part Name="PID_OpenPlantSpecManagerPlugin" BMakeFile="pid/OpenPlantSpecManagerPlugin/OpenPlantSpecManagerPlugin.mke">
+        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_SpecReader" />
+        <SubPart PartName="FW_SpecManager" />
+        <SubPart PartName="FW_PipingSpecification" />
+        <SubPart PartName="PID_Interfaces" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidOpenPlantSpecManagerPlugin.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidOpenPlantSpecManagerPlugin"/>
+            </Assemblies>
+        </Bindings>
+    </Part> 
+    
+    <Part Name="PID" BMakeFile="pid/pid.mke">
+        <!--
+         <SubPart PartName="owlfileecplugin" PartFile="iso15926"                Repository="iso15926"/>
+                  <SubPart PartName="common" PartFile="iso15926"                Repository="iso15926"/>
+                        <SubPart PartName="RDFEndPointProxy" PartFile="iso15926"                Repository="iso15926"/>
+                           <SubPart PartName="iringecplugin" PartFile="iso15926"                Repository="iso15926"/>
+        -->
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="DrawingUpgrade"                      PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="InstanceImporter"                    PartFile="opcommontools"                Repository="opcommontools"/>        
+        <SubPart PartName="PID_OpenPlantSpecManagerPlugin" />
+        <SubPart PartName="SCH_Catalog" />
+        <SubPart PartName="FW_BusinessKeyControlsAddins" />
+        <SubPart PartName="FW_SpecManager" />
+        <SubPart PartName="MsCadElementHandler" />
+        <SubPart PartName="opef"                            PartFile="opef"                     Repository="opef" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.Pid.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.Pid"/>
+            </Assemblies>
+            <Files ProductDirectoryName="ConfigDir" ProductSubDirectory="appl" >Delivery/pid.cfg</Files>
+            <Files ProductDirectoryName="PowerProductName" ProductSubDirectory="cell" >Delivery/cell/PID_Application.cel</Files>
+            <Files ProductDirectoryName="PowerProductName" >Delivery/OPPID_FrameworkLogger.xml</Files>
+            <Files ProductDirectoryName="OPPIDScripts">Delivery\Scripts\Config.db</Files>
+        </Bindings>
+    </Part>   
+    <Part Name="PID_Catalog" BMakeFile="pid/Catalog/Catalog.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="PID" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidCatalog.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidCatalog"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    <Part Name="PID_Services" BMakeFile="pid/Services/Services.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Catalog" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidServices.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidServices"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    <Part Name="PID_AIImport" BMakeFile="pid/AIImport/PID_AIImport.mke">
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Catalog" />
+
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PID_AIImport.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PID_AIImport"/>
+            </Assemblies>
+        </Bindings>
+    </Part>    
+    
+    <Part Name="PID_SettingsAddin" BMakeFile="pid/SettingsAddin/SettingsAddin.mke">        
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+         <SubPart PartName="PID" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidSettingsAddin.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidSettingsAddin"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    
+    <Part Name="PID_PropertyEnabler" BMakeFile="pid/PropertyEnabler/PropertyEnabler.mke">        
+        <SubPart PartName="PlantiModelECPlugin"                 PartFile="ecplugins"                    Repository="ecplugins" />
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="FW_ObjectModel" />
+          <SubPart PartName="PID" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidPropertyEnabler.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidPropertyEnabler"/>
+            </Assemblies>
+        </Bindings>
+    </Part>
+    <Part Name="PID_Convert_Axsys" BMakeFile="pid/convert/axsys/AxsysConversionFramework.mke">
+        <SubPart PartName="opcommontools"                       PartFile="opcommontools"                Repository="opcommontools" />
+        <SubPart PartName="PID" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="FW_ComponentManager" />
+        <SubPart PartName="SCH_Interfaces" />
+        <SubPart PartName="SCH_Schematics" />
+        <SubPart PartName="SCH_Catalog" />
+        <SubPart PartName="FW_AppInterface" />
+        <SubPart PartName="FW_ConversionFramework" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.Plant.PidAxsysConversion.dll
+                <TransKit SourceDirectory="Delivery\Transkit\Bentley.Plant.PidAxsysConversion"/>
+            </Assemblies>
+        </Bindings>
+    </Part>    
+    
+    <!-- kludged in MS readme for now-->
+    <Part Name="OpenPlantPIDDocumentation">
+        <Documentation>
+            <DocumentationItem Type="Trisoft" Format="webhelp" Baseline="OpenPlant PID Readme-v11-GUID-0BEE698A-FFF2-415E-9598-A48E86026ABE-2021/04/01 09:17:13" Name="readMe_OpenPlantPID" UseLanguageDir="false" >
+                readMe_OpenPlantPID_$(language)
+            </DocumentationItem>
+        </Documentation>
+        <Bindings>
+            <Documentation Name="readMe_OpenPlantPID" ProductDirectoryName="OPPIDReadMeDocumentation" BindToWixBuild="true">
+                Delivery\Documentation\readMe_OpenPlantPID_$(language).zip
+            </Documentation>
+        </Bindings>
+    </Part>
+    
+    <Part Name="OPPIDInstallerFiles" BMakeFile="install\oppidInstallerFiles.prewire.mke">
+      <SubPart PartName="Eula" PartFile="Eula" Repository="Eula" />
+      
+      <Bindings>
+          <Files BindToWixBuild="true">
+            OPPIDInstallerFiles\OPPID.bundle.wxs
+            OPPIDInstallerFiles\OPPIDBundle_LanguagePack.bundle.wxs
+            OPPIDInstallerFiles\OPPID.InstallerBeforeCompile.mki
+            OPPIDInstallerFiles\OPPID.InstallerAfterLinking.mki
+            OPPIDInstallerFiles\OpenPlantPID_CONNECTEdition.ico
+            OPPIDInstallerFiles\msFeaturesFrag.wxs
+            OPPIDInstallerFiles\OPPID.WixStrings.wxl
+            OPPIDInstallerFiles\OPPID.ShortcutFrag.wxs
+            OPPIDInstallerFiles\OpenPlantMicrostation.ico
+            OPPIDInstallerFiles\OpenPlantMicrostationSecure.ico
+            <TransKit SourceDirectory="OPPIDInstallerFiles\Transkit" />
+          </Files>
+      </Bindings>
+    </Part>
+    
+    <Part Name="OpenPlantPIDSDK" BMakeFile="SDK\OpenPlantPIDSDK\OpenPlantPIDSDK.mke">
+        <SubPart PartName="OpenPlantPIDExe" />
+        <SubPart PartName="PID"  />
+        <SubPart PartName="PID_Interfaces"  />
+        <SubPart PartName="SCH_Catalog" />
+        <SubPart PartName="SCH_Interfaces" />
+        <SubPart PartName="SCH_Schematics" />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="Geometry" />
+        <SubPart PartName="FW_PipingSpecification" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="FW_BMFPropertyServices" />
+        <SubPart PartName="FW_Utilities" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <SubPart PartName="CadSystem" />
+        <SubPart PartName="FW_GraphicsSystem" />
+        <SubPart PartName="FW_Catalog" />
+        <SubPart PartName="FW_AssemblyManager" />
+        <SubPart PartName="MSUtilities" />
+        <SubPart PartName="EC"          PartFile="OPEF-PlatformComponents"            Repository="OPEF-PlatformComponents" />
+        <Bindings>
+            <Assemblies ProductDirectoryName="OPPIDAssemblies">
+                Delivery\Bentley.OpenPlantPID.SDK.dll
+            </Assemblies>
+        </Bindings>
+    </Part> 
+
+    <Part Name="OpenPlantPIDSDKExamples" BMakeFile="SDK\OpenPlantPIDSDKExamples.mke">
+        <Bindings>
+            <Directory SourceName="Delivery/SDKExamples" ProductDirectoryName="OPPIDSDKExamples" />
+        </Bindings>
+    </Part>
+    <Part Name="oppid">   
+        <SubPart PartName="Geometry" /> 
+        <SubPart PartName="PrimitiveUtilities" /> 
+        <SubPart PartName="BmfCadSysMSUtilities" />
+        <SubPart PartName="BmfCadSysInterfaces" />
+        <SubPart PartName="BmfCadSysMSPrimitiveFactory" />
+        <SubPart PartName="BmfPrimitives" />
+        <SubPart PartName="CadSystem" />     
+        <SubPart PartName="MSUtilities" />           
+        <SubPart PartName="MsCadPrimitives" />
+        <SubPart PartName="MsCadElementUserInterface" />
+        <SubPart PartName="MsCadFileIOServices" />     
+        <SubPart PartName="MsCadIDGNFileIO" /> 
+        <SubPart PartName="MsCadAXSYSFileIO" />
+        <SubPart PartName="MsCadSysCadElement" />
+        <SubPart PartName="MsCadElementHandler" />
+        <SubPart PartName="MsCadUserInterface" />
+        <SubPart PartName="FW_OMInterfaces" />
+        <SubPart PartName="FW_Catalog" />
+        <SubPart PartName="FW_Utilities" />
+        <SubPart PartName="FW_GraphicsSystem" />
+        <SubPart PartName="FW_DesignHistory" />
+        <SubPart PartName="FW_Persist_AlternateRepBase" />
+                      
+        <!-- We shall not convert DgnECPlugin extension project to vancouver, everything it did would be handled in client code-->
+        <!-- <SubPart PartName="FW_Persist_DGN" /> -->
+                      
+        <SubPart PartName="PlantiModelECPlugin"             PartFile="ecplugins"                Repository="ecplugins" />
+        <SubPart PartName="FW_Persist_PlantBim" />
+        <SubPart PartName="FW_Persist_PersistenceManager" />
+        <SubPart PartName="FW_ComponentManager" />
+        <SubPart PartName="FW_AssemblyManager" />
+        <SubPart PartName="FW_PWIntUtilities" />
+        <SubPart PartName="FW_Tools" />
+        <SubPart PartName="FW_BMFPropertyServices" />
+        <SubPart PartName="FW_PipingSpecification" />
+        <SubPart PartName="FW_SpecRecordSelection" />
+        <SubPart PartName="FW_SpecReader" />
+        <SubPart PartName="FW_SpecManager" />
+        <SubPart PartName="FW_BusinessKeyControls" />                         
+        <SubPart PartName="FW_ValidationChecker" />
+        <SubPart PartName="FW_ConversionFramework" />
+        <SubPart PartName="FW_ObjectModel" />
+        <SubPart PartName="FW_PropertyEnabler" />
+        <SubPart PartName="FW_AppInterface" />
+        <SubPart PartName="FW_BusinessKeyControlsAddins" />
+        <SubPart PartName="FW_Selection" />
+        <SubPart PartName="FW_ECBrowserExtensions" />
+        <SubPart PartName="SCH_Cells" />
+        <SubPart PartName="SCH_Interfaces" />
+        <SubPart PartName="SCH_Schematics" />
+        <SubPart PartName="SCH_Catalog" />
+        <SubPart PartName="PID_Interfaces" />
+        <SubPart PartName="PID_PDWSpecProvider" />
+        <SubPart PartName="PID_OpenPlantSpecManagerPlugin" />
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Catalog" />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="PID_AIImport" />
+        <SubPart PartName="PID_SettingsAddin" />
+        <SubPart PartName="PID_PropertyEnabler" />                        
+        <SubPart PartName="PID_Convert_Axsys" />
+    </Part>
+
+    <Part Name="OpenPlantPIDAutomation" >
+        <!-- <SubPart PartName="OpenPlantPIDSDKInternal" /> -->
+        <!-- <SubPart PartName="OPPIDLineToPipeRun" /> -->
+        <!-- <SubPart PartName="OpenPlantPIDSDKTests" /> -->
+        <!-- <SubPart PartName="TestPlants" /> -->
+        <!-- <SubPart PartName="OPPIDAutomationFilesDep" /> -->
+    </Part>
+    
+    <Part Name="OpenPlantPIDAutomationDep" >
+        <SubPart PartName="DatasetScript" />
+        <SubPart PartName="OPPIDTests" />
+        <SubPart PartName="OPPIDPerformanceTests" />
+		<SubPart PartName="OPPIDToolScripting" />
+		<SubPart PartName="OPPIDAllComponentsScript" />
+    </Part>
+	
+	<Part Name="OPPIDToolScripting" BMakeFile="Automation/OPPIDToolScripting/OPPIDToolScripting/OPPIDToolScripting.mke">
+	 <SubPart PartName="OpenPlantPIDSDK" />
+	 <SubPart PartName="DgnCompareConnect" PartFile="opcommontools"               Repository="opcommontools"/>
+	 <SubPart PartName="PPTestRunner" PartFile="opcommontools"               Repository="opcommontools"/>
+     </Part>
+	
+    <Part Name="OPPIDAllComponentsScript" BMakeFile="Automation/OPPIDAllComponentsScript/OPPIDAllComponentsScript/OPPIDAllComponentsScript.mke">
+		<!-- <SubPart PartName="PID" /> -->
+        <!-- <SubPart PartName="PID_Services" /> -->
+		<SubPart PartName="OpenPlantPIDSDK" />
+    </Part>
+	
+    <Part Name="OpenPlantPIDSDKInternal" BMakeFile="Automation/OpenPlantPIDSDKInternal/OpenPlantPIDSDK/OpenPlantPIDSDKInternal.mke">        
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Services" />
+		<!-- <SubPart PartName="PlantiModelECPlugin"             PartFile="ecplugins"                Repository="ecplugins" /> -->
+    </Part>
+
+    <Part Name="DatasetScript" BMakeFile="Automation/DatasetScript/DatasetScript/DatasetScript.mke">  
+        <SubPart PartName="OPPIDAutomationFiles" />
+        <SubPart PartName="OpenPlantPIDSDKInternal" />	
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Services" />
+    </Part>
+
+    <Part Name="OPPIDLineToPipeRun" BMakeFile="Automation/OPPIDLineToPipeRun/OPPIDLineToPipeRun/OPPIDLineToPipeRun.mke">  
+        <SubPart PartName="PID"  />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="OpenPlantPIDSDK" />
+    </Part>
+
+    <Part Name="OpenPlantPIDSDKTests" BMakeFile="Automation/OpenPlantPIDSDKTests/OpenPlantPIDSDKTests/OpenPlantPIDSDKTests.mke">
+        <SubPart PartName="OpenPlantPIDSDK" />
+        <SubPart PartName="PID"  />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="PPTestRunner" PartFile="opcommontools"                Repository="opcommontools"/>
+    </Part>
+
+    <Part Name="TestPlants" BMakeFile="Automation/TestPlants/TestPlants.mke">
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="MsCadSysCadElement" />
+        <SubPart PartName="PPTestRunner" PartFile="opcommontools"                Repository="opcommontools"/>		
+    </Part>
+
+    <Part Name="OPPIDTests" BMakeFile="Automation/OPPIDTests/OPPIDTests/OPPIDTests.mke">
+        <SubPart PartName="OPPIDAutomationFiles" />
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="PPTestRunner" PartFile="opcommontools"                Repository="opcommontools"/>	
+        <SubPart PartName="TestPlants" />
+    </Part>
+
+    <Part Name="OPPIDPerformanceTests" BMakeFile="Automation/OPPIDPerformanceTests/OPPIDPerformanceTests/OPPIDPerformanceTests.mke">
+        <SubPart PartName="OPPIDAutomationFiles" />
+        <SubPart PartName="PID" />
+        <SubPart PartName="PID_Services" />
+        <SubPart PartName="PPTestRunner" PartFile="opcommontools"                Repository="opcommontools"/>	
+        <SubPart PartName="TestPlants" />
+    </Part>
+
+    <Part Name="OPPIDAutomationFiles" BMakeFile="Automation\OPPIDAutomationFiles.prewire.mke">
+        <SubPart PartName="OpenPlantPIDSDKTests" />
+        <SubPart PartName="OpenPlantPIDSDKInternal" />
+        <SubPart PartName="TestPlants" />
+        <SubPart PartName="OPPIDLineToPipeRun" />
+        <Bindings>
+        <Assemblies ProductDirectoryName="Automation">
+            Automation\*.dll
+        </Assemblies>
+        </Bindings>
+    </Part>
+
+    <Part Name="OPPIDAutomationFilesDep" BMakeFile="Automation\OPPIDAutomationFilesDep.prewire.mke">
+        <SubPart PartName="DatasetScript" />
+        <SubPart PartName="OPPIDTests" />
+        <SubPart PartName="OPPIDPerformanceTests" />
+		<SubPart PartName="OPPIDToolScripting" />
+		<SubPart PartName="OPPIDAllComponentsScript" />
+        <Bindings>
+        <Assemblies ProductDirectoryName="Automation">
+            Automation\*.dll
+        </Assemblies>
+        </Bindings>
+    </Part>
+
+    <ProductDirectoryList ListName="OpenPlantPID" >
+        <ProductDirectory   Name="PowerProductName"                         Path="OpenPlantPID"                                       />   
+        <!-- used by spectools starts-->
+        <ProductDirectory   Name="OpenPlantAssemblies"                      Path="Assemblies"           RelativeTo="PowerProductName" /> 
+        <ProductDirectory   Name="OPAssemblies"                             Path="Assemblies"           RelativeTo="PowerProductName" /> 
+        <!-- used by spectools ends-->        
+        <ProductDirectory   Name="OPPIDAssemblies"                          Path="Assemblies"           RelativeTo="PowerProductName" /> 
+        <!-- used by modelsync starts-->        
+        <ProductDirectory   Name="ModelSyncAssemblies"                      Path="DesignSync"           RelativeTo="OPPIDAssemblies" /> 
+        <ProductDirectory   Name="DgnNavigatorAssemblies"                   Path="DesignSync"           RelativeTo="OPPIDAssemblies" /> 
+        <ProductDirectory   Name="ModelSyncDoc"                             Path="DesignSync"           RelativeTo="OPPIDAssemblies" />         
+        <!-- used by modelsync ends-->
+        <!-- iso15926 -->
+        <ProductDirectory   Name="iso15926"                                 Path="Assemblies"           RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="Automation"                               Path="Automation"           RelativeTo="OPAssemblies" />		
+
+        <ProductDirectory   Name="OPPIDSDKExamples"                         Path="SDKExamples"           RelativeTo="PowerProductName" /> 
+        <ProductDirectory   Name="OPECPluginAssemblies"                  Path="PlantiModel"   RelativeTo="OPPIDAssemblies" /> 
+        
+        <!-- used by Plant Bim / DgnDb starts-->   
+            <!-- OpBimClient -->
+            <ProductDirectory   Name="OPBimClientAssemblies"                    Path="PlantiModel"             RelativeTo="OPPIDAssemblies" /> 
+            <!-- PlantDomain DgnDb -->
+            <ProductDirectory Name="PlantDomainAssembliesDir"                   Path="PlantiModel"             RelativeTo="OPPIDAssemblies" /> 
+            <ProductDirectory Name="PlantDomainSchemasDir"                      Path="PlantiModel\Assets\ECSchemas\Domain" RelativeTo="OPPIDAssemblies" /> 
+            
+            <!-- ECDbECPlugin  -->
+            <ProductDirectory Name="ECDbNETAssemblies"                          Path="PlantiModel"             RelativeTo="OPPIDAssemblies" /> 
+            <ProductDirectory Name="ECDbECPluginAssemblies"                     Path="PlantiModel"             RelativeTo="OPPIDAssemblies" /> 
+            <ProductDirectory Name="Assemblies"                                 Path="PlantiModel"             RelativeTo="OPPIDAssemblies" /> 
+            
+            <!-- DgbDb -->
+            <ProductDirectory Name="iModel02Assemblies"                        Path="PlantiModel"              RelativeTo="OPPIDAssemblies" /> 
+            <ProductDirectory Name="iModel02SDKAssets"                         Path="PlantiModel\Assets"       RelativeTo="OPPIDAssemblies" /> 
+            <ProductDirectory Name="iModel02Assets"                            Path="PlantiModel\Assets"       RelativeTo="OPPIDAssemblies" />
+
+        <!-- used by Plant Bim / DgnDb  ends-->          
+        
+        <ProductDirectory   Name="OpenPlantPIDProductSchemas"               Path="Schemas"              RelativeTo="PowerProductName" /> 
+        <ProductDirectory   Name="OPPIDAssembliesBMF"                       Path="BMF"                  RelativeTo="OPPIDAssemblies" /> 
+        <ProductDirectory   Name="OPPIDAssembliesSCH"                       Path="Schematics"           RelativeTo="OPPIDAssemblies" /> 
+        <!--<ProductDirectory   Name="OPPIDApplicationConfig"                Path="Config/Appl"                     RelativeTo="PowerProductName" /> -->
+        <ProductDirectory   Name="RmgrToolsNativeAssemblies"                Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="MstnToolsNativeAssemblies"                Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="ConnectClientAPIWrapperLibrary"           Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="ECDbECPluginAssembliesECSchemas"          Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="MobileDgnSdkAssemblies"                   Path=""                     RelativeTo="PowerProductName\MobileDgnSdk" />
+        <ProductDirectory   Name="CacheManagerOutOfProcessAssemblies"       Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="CatalogServiceCacheManagerMixModeLibrary" Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="CatalogServicePluginNavigator"            Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="OPAssemblies"                             Path=""                     RelativeTo="OPPIDAssemblies"  />
+        <ProductDirectory   Name="OpenPlantCore"                            Path=""                     RelativeTo="OPPIDAssemblies" />
+        <ProductDirectory   Name="OPEFAssemblies"                           Path="OPEF"                 RelativeTo="OPPIDAssemblies"  />
+        <ProductDirectory   Name="DevExpressAssemblies"                     Path="DevExpress"           RelativeTo="OPEFAssemblies" />
+        <ProductDirectory   Name="OPEFApps"                                 Path=""                     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="OPPIDScripts"                             Path="Scripts"              RelativeTo="PowerProductName" />
+        
+        <ProductDirectory   Name="OPImperialDb"                             Path="Workspaces\OpenPlantExample\WorkSets\Imperial\Standards\OpenPlant\ApplicationDb"   RelativeTo="Configuration" />
+        <ProductDirectory   Name="OPMetricDb"                               Path="Workspaces\OpenPlantExample\WorkSets\Metric\Standards\OpenPlant\ApplicationDb"     RelativeTo="Configuration" />
+        <ProductDirectory   Name="OPMixedMetricDb"                          Path="Workspaces\OpenPlantExample\WorkSets\MixedMetric\Standards\OpenPlant\ApplicationDb"     RelativeTo="Configuration" />
+        <ProductDirectory   Name="ImperialReportsDb"                        Path="Workspaces\OpenPlantExample\WorkSets\Imperial\Standards\OpenPlant\Reports"         RelativeTo="Configuration" />
+        <ProductDirectory   Name="MetricReportsDb"                          Path="Workspaces\OpenPlantExample\WorkSets\Metric\Standards\OpenPlant\Reports"           RelativeTo="Configuration" />
+        <ProductDirectory   Name="MixedMetricReportsDb"                     Path="Workspaces\OpenPlantExample\WorkSets\MixedMetric\Standards\OpenPlant\Reports"      RelativeTo="Configuration" />
+        <ProductDirectory   Name="IronPythonAssemblies"                     Path=""                     RelativeTo="OPPIDAssemblies"  />
+        <ProductDirectory   Name="BentleyClientCoreAssemblies"              Path=""                     RelativeTo="OPPIDAssemblies"  />
+
+        <ProductDirectory   Name="OPMAssemblies"                            Path=""                     RelativeTo="OPPIDAssemblies"  />
+        
+        <!--Need to change to match workset -->
+        <ProductDirectory   Name="STDRibbon"         Path="Ribbon\Standard"     RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="ISORibbon"         Path="Ribbon\ISO"          RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="DINRibbon"         Path="Ribbon\DIN"          RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="APRibbon"          Path="Ribbon\AP"           RelativeTo="PowerProductName" />
+        <ProductDirectory   Name="KKSRibbon"         Path="Ribbon\KKS"          RelativeTo="PowerProductName" />
+        
+        <ProductDirectory   Name="OPConfigurationWorkspace"                 Path=""                             RelativeTo="Configuration"/>
+        <ProductDirectory   Name="OPConfigurationProgramFileSchemas"        Path="Schemas"                      RelativeTo="PowerProductName" />  
+        <ProductDirectory   Name="OPPIDConfigurationProgramFileSchemas"                                         RelativeTo="OPConfigurationProgramFileSchemas" />         
+        <ProductDirectory   Name="OPPIDReadMeDocumentation"                 Deliver="false"   />
+        
+        
+    </ProductDirectoryList>
+
+</BuildContext>
