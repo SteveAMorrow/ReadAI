@@ -10,7 +10,7 @@ namespace Bentley.Plant.App.Pid.AIImport
 {
     public class Import
     {
-    private bool autoSelect = true;
+    private bool autoSelect = false;
         public Import ()
         {
 
